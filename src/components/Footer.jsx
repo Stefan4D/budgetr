@@ -14,7 +14,7 @@ export default function Footer() {
           <span className="py-2 text-[20px] font-semibold uppercase text-slate-400">
             Budgetr
           </span>
-          <p className="my-4 text-[15px]">"Manage the budget plan"</p>
+          <p className="my-4 text-[15px]">Manage the budget plan</p>
         </div>
         <div className="mb-4 px-2 md:mb-4">
           <h2 className="py-2 text-[16px] font-semibold uppercase text-slate-400">

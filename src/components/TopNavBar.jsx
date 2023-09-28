@@ -6,12 +6,13 @@ export default function TopNavBar() {
     <nav className="rounded-lg bg-slate-800 shadow-lg">
       <div className="max-auto container">
         <div className="sm:flex">
-          <button
+          <Link
+            to="/"
             className="justify-left rounded-lg bg-slate-500 p-3 text-2xl font-semibold text-white"
             type="button"
           >
             BUDGETR
-          </button>
+          </Link>
 
           <ul className="text-XL border-t text-white sm:self-center sm:border-none">
             <li className="justify-right sm:inline-block">
