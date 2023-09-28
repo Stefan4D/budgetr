@@ -1,6 +1,6 @@
 // refactor this to be a custom hook
 import { useState, useEffect } from 'react';
-import initializeUserStores from '../utils/dbUtils';
+import { initializeUserStores, addUser } from '../utils/dbUtils';
 
 export default function TestComponent() {
   // Array to store user-specific localForage instances
@@ -9,6 +9,10 @@ export default function TestComponent() {
 
   // Initialize user stores from the stored user list
   useEffect(() => {
+    // TODO: Need to refactor to properly handle async/await
+    // addUser('Alice');
+    // addUser('Bob');
+
     const registeredUsers = initializeUserStores();
     setUserStores(registeredUsers);
 
@@ -20,16 +24,22 @@ export default function TestComponent() {
     const userDB = loggedInUser ? loggedInUser.db : null;
 
     setActiveDB(userDB);
+    console.log(activeDB);
 
-    activeDB
-      .getItem('db')
-      .then((value) => {
-        // Do something with the value
-        // set React state to the value retrieved
-      })
-      .catch((err) => {
-        // This code runs if there were any errors
-        console.log(err);
-      });
+    // activeDB
+    //   .getItem('db')
+    //   .then((value) => {
+    //     // Do something with the value
+    //     // set React state to the value retrieved
+    //   })
+    //   .catch((err) => {
+    //     // This code runs if there were any errors
+    //     console.log(err);
+    //   });
+
+    activeDB.setItem('db', [{ name: 'test' }, { name: 'test2' }]);
+    console.log(activeDB.getItem('db'));
   }, []);
+
+  return <div>Test Component</div>;
 }

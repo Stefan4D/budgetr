@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TestComponent from '../components/DB';
 
 export default function Budgetr() {
   return (
     <>
       <div>Hello Budgetr</div>
+      <TestComponent />
       <Link className="mr-2" to="/">
         Go to Home
       </Link>
