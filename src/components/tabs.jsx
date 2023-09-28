@@ -35,34 +35,65 @@ function Tabs() {
       </div>
       <div>
         {activeTab === 'Expense List' && <div>Expense List Content</div>}
-        {activeTab === 'Input Expense' && <div> <h1>Input Expense Content</h1>
-          
-        <form action="#">
-              <div class="grid grid-cols-2 gap-5">
-                <input type="text" placeholder="Firstname" class="border border-gray-400 py-1 px-2">
-                <input type="text" placeholder="Surname" class="border border-gray-400 py-1 px-2">
+        {activeTab === 'Input Expense' && (
+          <div>
+            {' '}
+            <h1>Input Expense Content</h1>
+            <form action="#">
+              <div className="grid grid-cols-2 gap-5">
+                <input
+                  type="text"
+                  placeholder="Firstname"
+                  className="border border-gray-400 px-2 py-1"
+                />
+                <input
+                  type="text"
+                  placeholder="Surname"
+                  className="border border-gray-400 px-2 py-1"
+                />
               </div>
-              <div class="mt-5">
-                <input type="text" placeholder="Email" class="border border-gray-400 py-1 px-2 w-full"/>
+              <div className="mt-5">
+                <input
+                  type="text"
+                  placeholder="Email"
+                  className="w-full border border-gray-400 px-2 py-1"
+                />
               </div>
-              <div class="mt-5">
-                <input type="password" placeholder="Password" class="border border-gray-400 py-1 px-2 w-full"/>
+              <div className="mt-5">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  className="w-full border border-gray-400 px-2 py-1"
+                />
               </div>
-              <div class="mt-5">
-                <input type="password" placeholder="Confirm Password" class="border border-gray-400 py-1 px-2 w-full"/>
+              <div className="mt-5">
+                <input
+                  type="password"
+                  placeholder="Confirm Password"
+                  className="w-full border border-gray-400 px-2 py-1"
+                />
               </div>
-              <div class="mt-5">
-                <input type="checkbox" class="border border-gray-400"/>
+              <div className="mt-5">
+                <input type="checkbox" className="border border-gray-400" />
                 <span>
-                  I accept the <a href="#" class="text-purple-500 font-semibold">Terms of Use</a> &  <a href="#" class="text-purple-500 font-semibold">Privacy Policy</a> 
+                  I accept the{' '}
+                  <a href="#" className="font-semibold text-purple-500">
+                    Terms of Use
+                  </a>{' '}
+                  &{' '}
+                  <a href="#" className="font-semibold text-purple-500">
+                    Privacy Policy
+                  </a>
                 </span>
               </div>
-              <div class="mt-5">
-                <button class="w-full bg-purple-500 py-3 text-center text-white">Register Now</button>
+              <div className="mt-5">
+                <button  type="button" w-full bg-purple-500 py-3 text-center text-white">
+                  Register Now
+                </button>
               </div>
             </form>
-
-          </div>}
+          </div>
+        )}
       </div>
     </div>
   );
