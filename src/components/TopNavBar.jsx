@@ -5,11 +5,11 @@ export default function TopNavBar() {
   return (
     // <div className="mb-3">TopNavBar</div>
     <div>
-      <nav className="bg-emerald-800 shadow-lg rounded-lg" >
+      <nav className="bg-slate-800 shadow-lg rounded-lg" >
         <div className="container max-auto" >
           <div className="sm:flex" >
             
-            <button className='bg-lime-700 rounded-lg text-white text-2xl font-semibold p-3 justify-left' >BUDGETR</button>
+            <button className='bg-slate-500 rounded-lg text-white text-2xl font-semibold p-3 justify-left' >BUDGETR</button>
            
 {/* ====================================================== */}
 
