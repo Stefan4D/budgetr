@@ -35,7 +35,34 @@ function Tabs() {
       </div>
       <div>
         {activeTab === 'Expense List' && <div>Expense List Content</div>}
-        {activeTab === 'Input Expense' && <div>Input Expense Content</div>}
+        {activeTab === 'Input Expense' && <div> <h1>Input Expense Content</h1>
+          
+        <form action="#">
+              <div class="grid grid-cols-2 gap-5">
+                <input type="text" placeholder="Firstname" class="border border-gray-400 py-1 px-2">
+                <input type="text" placeholder="Surname" class="border border-gray-400 py-1 px-2">
+              </div>
+              <div class="mt-5">
+                <input type="text" placeholder="Email" class="border border-gray-400 py-1 px-2 w-full">
+              </div>
+              <div class="mt-5">
+                <input type="password" placeholder="Password" class="border border-gray-400 py-1 px-2 w-full">
+              </div>
+              <div class="mt-5">
+                <input type="password" placeholder="Confirm Password" class="border border-gray-400 py-1 px-2 w-full">
+              </div>
+              <div class="mt-5">
+                <input type="checkbox" class="border border-gray-400">
+                <span>
+                  I accept the <a href="#" class="text-purple-500 font-semibold">Terms of Use</a> &  <a href="#" class="text-purple-500 font-semibold">Privacy Policy</a> 
+                </span>
+              </div>
+              <div class="mt-5">
+                <button class="w-full bg-purple-500 py-3 text-center text-white">Register Now</button>
+              </div>
+            </form>
+
+          </div>}
       </div>
     </div>
   );
