@@ -11,7 +11,7 @@ export default function TopNavBar() {
             
             <button className='bg-slate-500 rounded-lg text-white text-2xl font-semibold p-3 justify-left' >BUDGETR</button>
            
-            <ul className='text-white sm:self-center text-XL border-t sm:border-none'>
+            <ul className='flex items-center justify-endplace-items-end text-white sm:self-center text-XL border-t sm:border-none'>
               <li className='sm:inline-block justify-right'>
                 <a href="/" className='p-3 hover:text-blue  hover:text-cyan-400 '>Home</a>
               </li>
