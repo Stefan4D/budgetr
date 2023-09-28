@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Tabs = () => {
+function Tabs() {
   const [activeTab, setActiveTab] = useState('Expense List');
 
   const handleTabClick = (tab) => {
@@ -9,10 +9,11 @@ const Tabs = () => {
 
   return (
     <div>
-      <div className="flex mb-4">
+      <div className="mb-4 flex">
         <button
+          type="button"
           onClick={() => handleTabClick('Expense List')}
-          className={`mr-2 py-2 px-4 rounded ${
+          className={`mr-2 rounded px-4 py-2 ${
             activeTab === 'Expense List'
               ? 'bg-blue-500 text-white'
               : 'bg-blue-200 text-gray-800'
@@ -21,8 +22,9 @@ const Tabs = () => {
           Expense List
         </button>
         <button
+          type="button"
           onClick={() => handleTabClick('Input Expense')}
-          className={`py-2 px-4 rounded ${
+          className={`rounded px-4 py-2 ${
             activeTab === 'Input Expense'
               ? 'bg-blue-500 text-white'
               : 'bg-blue-200 text-gray-800'
@@ -37,6 +39,6 @@ const Tabs = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Tabs;
