@@ -18,10 +18,10 @@ function App() {
         Routes commencing with /app will include the content from the above route at present unless we use exact.
         Not using exact at moment to allow workaround for nested routes, which aren't working right now 
         */}
-        <Route path="/addExpense" element={<AddExpense />} />
-        <Route path="/modifyExpense" element={<ModifyExpense />} />
-        <Route path="/viewExpenses" element={<ViewExpenses />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/app/add" element={<AddExpense />} />
+        <Route path="/app/modify" element={<ModifyExpense />} />
+        <Route path="/app/view" element={<ViewExpenses />} />
+        <Route path="/app/dashboard" element={<Dashboard />} />
         <Route path="*" element={<h1>Not Found!</h1>} />
       </Routes>
     </Router>

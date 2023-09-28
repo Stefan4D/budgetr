@@ -17,19 +17,19 @@ export default function TopNavBar() {
               </li>
 
               <li className='sm:inline-block'>
-                <a href="/addExpense" className='p-3 hover:text-blue  hover:text-cyan-400'>Add Expense</a>  
+                <a href="/app/add" className='p-3 hover:text-blue  hover:text-cyan-400'>Add Expense</a>  
               </li>
 
               <li className='sm:inline-block'>
-                <a href="/dashboard" className='p-3 hover:text-blue  hover:text-cyan-400 '>Dashboard</a>
+                <a href="/app/dashboard" className='p-3 hover:text-blue  hover:text-cyan-400 '>Dashboard</a>
               </li>
 
               <li className='sm:inline-block'>
-                <a href="/modifyExpense" className='p-3 hover:text-cyan-400'>Modify Expense</a>
+                <a href="/app/modify" className='p-3 hover:text-cyan-400'>Modify Expense</a>
               </li>
 
               <li className='sm:inline-block'>
-                <a href="/viewExpenses" className='p-3 hover:text-blue  hover:text-cyan-400 '>View Expenses</a>
+                <a href="/app/view" className='p-3 hover:text-blue  hover:text-cyan-400 '>View Expenses</a>
               </li>
              
             </ul>
