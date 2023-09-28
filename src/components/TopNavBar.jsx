@@ -1,46 +1,64 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 export default function TopNavBar() {
   return (
-    // <div className="mb-3">TopNavBar</div>
-    <div>
-      <nav className="bg-slate-800 shadow-lg rounded-lg" >
-        <div className="container max-auto" >
-          <div className="sm:flex" >
-            
-            <button className='bg-slate-500 rounded-lg text-white text-2xl font-semibold p-3 justify-left' >BUDGETR</button>
-           
-            <ul className='text-white sm:self-center text-XL border-t sm:border-none'>
-              <li className='sm:inline-block justify-right'>
-                <a href="/" className='p-3 hover:text-blue  hover:text-cyan-400 '>Home</a>
-              </li>
+    <nav className="rounded-lg bg-slate-800 shadow-lg">
+      <div className="max-auto container">
+        <div className="sm:flex">
+          <Link
+            to="/"
+            className="justify-left rounded-lg bg-slate-500 p-3 text-2xl font-semibold text-white"
+            type="button"
+          >
+            BUDGETR
+          </Link>
 
-              <li className='sm:inline-block'>
-                <a href="/app/add" className='p-3 hover:text-blue  hover:text-cyan-400'>Add Expense</a>  
-              </li>
+          <ul className="text-XL border-t text-white sm:self-center sm:border-none">
+            <li className="justify-right sm:inline-block">
+              <Link
+                to="/"
+                className="hover:text-blue p-3  hover:text-cyan-400 "
+              >
+                Home
+              </Link>
+            </li>
 
-              <li className='sm:inline-block'>
-                <a href="/app/dashboard" className='p-3 hover:text-blue  hover:text-cyan-400 '>Dashboard</a>
-              </li>
+            <li className="sm:inline-block">
+              <Link
+                to="/app/add"
+                className="hover:text-blue p-3  hover:text-cyan-400"
+              >
+                Add Expense
+              </Link>
+            </li>
 
-              <li className='sm:inline-block'>
-                <a href="/app/modify" className='p-3 hover:text-cyan-400'>Modify Expense</a>
-              </li>
+            <li className="sm:inline-block">
+              <Link
+                to="/app/dashboard"
+                className="hover:text-blue p-3  hover:text-cyan-400 "
+              >
+                Dashboard
+              </Link>
+            </li>
 
-              <li className='sm:inline-block'>
-                <a href="/app/view" className='p-3 hover:text-blue  hover:text-cyan-400 '>View Expenses</a>
-              </li>
-             
-            </ul>
+            <li className="sm:inline-block">
+              <Link to="/app/modify" className="p-3 hover:text-cyan-400">
+                Modify Expense
+              </Link>
+            </li>
 
-          </div>
-
+            <li className="sm:inline-block">
+              <Link
+                to="/app/view"
+                className="hover:text-blue p-3  hover:text-cyan-400 "
+              >
+                View Expenses
+              </Link>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </div>
-  )
-  
-  
-  
+      </div>
+    </nav>
+  );
 }
