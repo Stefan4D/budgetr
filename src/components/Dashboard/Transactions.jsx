@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 
 export default function Transactions() {
   return (
@@ -23,6 +24,9 @@ export default function Transactions() {
               <th className="border-b border-slate-500 bg-slate-100 px-4 py-2 text-right text-sm font-bold uppercase text-slate-500">
                 Amount
               </th>
+              <th className="border-b border-slate-500 bg-slate-100 px-4 py-2 text-right text-sm font-bold uppercase text-slate-500">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -34,6 +38,28 @@ export default function Transactions() {
               <td className="border-b border-slate-500 px-4 py-2 text-right">
                 $1500
               </td>
+              <td className="border-b border-slate-500 px-4 py-2 text-right">
+                <div className="flex justify-end">
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaEye />
+                  </button>
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaEdit />
+                  </button>
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
+              </td>
             </tr>
             <tr className="hover:bg-slate-300">
               <td className="border-b border-slate-500 px-4 py-2">Beer</td>
@@ -42,6 +68,28 @@ export default function Transactions() {
               </td>
               <td className="border-b border-slate-500 px-4 py-2 text-right">
                 $1950
+              </td>
+              <td className="border-b border-slate-500 px-4 py-2 text-right">
+                <div className="flex justify-end">
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaEye />
+                  </button>
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaEdit />
+                  </button>
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
               </td>
             </tr>
             <tr className="hover:bg-slate-300">
@@ -52,6 +100,28 @@ export default function Transactions() {
               <td className="border-b border-slate-500 px-4 py-2 text-right">
                 $1850
               </td>
+              <td className="border-b border-slate-500 px-4 py-2 text-right">
+                <div className="flex justify-end">
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaEye />
+                  </button>
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaEdit />
+                  </button>
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
+              </td>
             </tr>
             <tr className="hover:bg-slate-300">
               <td className="border-b border-slate-500 px-4 py-2">Food</td>
@@ -60,6 +130,28 @@ export default function Transactions() {
               </td>
               <td className="border-b border-slate-500 px-4 py-2 text-right">
                 $2300
+              </td>
+              <td className="border-b border-slate-500 px-4 py-2 text-right">
+                <div className="flex justify-end">
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaEye />
+                  </button>
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaEdit />
+                  </button>
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
               </td>
             </tr>
           </tbody>
