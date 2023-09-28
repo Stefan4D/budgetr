@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default function AddExpense() {
   return(
 
@@ -12,6 +13,9 @@ export default function AddExpense() {
             
             <button className='bg-lime-700 rounded-lg text-white text-2xl font-semibold p-3 justify-left' >BUDGETR</button>
            
+            <li className='sm:inline-block sm:self-center'>
+              <h4 className='text-white  text-XL border-t sm:border-none'>Add Expense</h4>     
+              </li>
 
           </div>
 

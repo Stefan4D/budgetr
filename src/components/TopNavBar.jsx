@@ -1,5 +1,5 @@
 import React from 'react';
-// import AddExpense from '../pages/AddExpense';
+
 
 export default function TopNavBar() {
   return (
@@ -11,35 +11,28 @@ export default function TopNavBar() {
             
             <button className='bg-lime-700 rounded-lg text-white text-2xl font-semibold p-3 justify-left' >BUDGETR</button>
            
-{/* ====================================================== */}
-
-
-
             <ul className='text-white sm:self-center text-XL border-t sm:border-none'>
               <li className='sm:inline-block justify-right'>
-                <a href="Home" className='p-3 hover:text-blue  hover:text-cyan-400 '>Home</a>
-              </li>
-              <li className='sm:inline-block'>
-                <a href="Add-Expense" className='p-3 hover:text-blue  hover:text-cyan-400'>Add Expense</a>
+                <a href="/" className='p-3 hover:text-blue  hover:text-cyan-400 '>Home</a>
               </li>
 
               <li className='sm:inline-block'>
-                <a href="Dashboard" className='p-3 hover:text-blue  hover:text-cyan-400 '>Dashboard</a>
+                <a href="/addExpense" className='p-3 hover:text-blue  hover:text-cyan-400'>Add Expense</a>  
               </li>
 
               <li className='sm:inline-block'>
-                <a href="Modify-Expense" className='p-3 hover:text-cyan-400'>Modify Expense</a>
+                <a href="/dashboard" className='p-3 hover:text-blue  hover:text-cyan-400 '>Dashboard</a>
               </li>
 
               <li className='sm:inline-block'>
-                <a href="View-Expenses" className='p-3 hover:text-blue  hover:text-cyan-400 '>View Expenses</a>
+                <a href="/modifyExpense" className='p-3 hover:text-cyan-400'>Modify Expense</a>
+              </li>
+
+              <li className='sm:inline-block'>
+                <a href="/viewExpenses" className='p-3 hover:text-blue  hover:text-cyan-400 '>View Expenses</a>
               </li>
              
-
-
             </ul>
-
-            {/*====================================================  */}
 
           </div>
 
