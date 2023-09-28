@@ -8,8 +8,7 @@ import ViewExpenses from './pages/ViewExpenses';
 import Dashboard from './pages/Dashboard';
 
 function App() {
-  console.log(window.location);
-  return ( 
+  return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
