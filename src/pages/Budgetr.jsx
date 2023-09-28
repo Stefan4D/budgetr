@@ -8,16 +8,16 @@ export default function Budgetr() {
       <Link className="mr-2" to="/">
         Go to Home
       </Link>
-      <Link className="mr-2" to="/addExpense">
+      <Link className="mr-2" to="/app/add">
         Go to App/add
       </Link>
-      <Link className="mr-2" to="/modifyExpense">
+      <Link className="mr-2" to="/app/modify">
         Go to App/modify
       </Link>
-      <Link className="mr-2" to="/viewExpenses">
+      <Link className="mr-2" to="/app/view">
         Go to App/view
       </Link>
-      <Link className="mr-2" to="/dashboard">
+      <Link className="mr-2" to="/app/dashboard">
         Go to App/dashboard
       </Link>
     </>
