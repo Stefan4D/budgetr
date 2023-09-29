@@ -24,14 +24,14 @@ export default function Dashboard() {
     setTransactions(value); // set application state
     console.table(value);
 
-    const tx = transactions.filter((expense) => {
-      const date = dayjs(expense.date);
-      const startDate = dayjs('2022-01-01');
-      const endDate = dayjs('2022-12-31');
-      return date.isBetween(startDate, endDate);
-    });
-    console.log(tx.length);
-    console.table(tx);
+    // const tx = transactions.filter((expense) => {
+    //   const date = dayjs(expense.date);
+    //   const startDate = dayjs('2022-01-01');
+    //   const endDate = dayjs('2022-12-31');
+    //   return date.isBetween(startDate, endDate);
+    // });
+    // console.log(tx.length);
+    // console.table(tx);
   }, []); // get localForage on first render
 
   useEffect(() => {
