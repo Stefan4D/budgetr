@@ -47,6 +47,7 @@ export default function Dashboard() {
 
   const barChartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',
@@ -115,7 +116,8 @@ export default function Dashboard() {
             TODO: Fix flex/grid layout for graphs
 
             */}
-            <div className="mt-8 flex flex-wrap space-x-0 space-y-2 md:space-x-4 md:space-y-0">
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {/* <div className="mt-8 flex flex-wrap space-x-0 space-y-2 md:space-x-4 md:space-y-0"> */}
               <GraphCard
                 graphType="doughnut"
                 title="Categories"
