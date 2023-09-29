@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaBars, FaBell, FaUser } from 'react-icons/fa';
-import TopNavBar from '../components/TopNavBar';
 import SideNav from '../components/Dashboard/SideNav';
 import GraphCard from '../components/Dashboard/GraphCard';
 import Transactions from '../components/Dashboard/Transactions';
@@ -27,28 +26,52 @@ export default function Dashboard() {
     },
   };
 
-  const currencyChartData = {
-    labels: ['USD', 'GBP'],
-    datasets: [
-      {
-        data: [60, 40],
-        backgroundColor: ['rgba(251, 146, 60, 1)', 'rgba(30, 41, 59, 0.5)'],
-      },
-    ],
-  };
-  const currencyChartOptions = {
+  // const currencyChartData = {
+  //   labels: ['USD', 'GBP'],
+  //   datasets: [
+  //     {
+  //       data: [60, 40],
+  //       backgroundColor: ['rgba(251, 146, 60, 1)', 'rgba(30, 41, 59, 0.5)'],
+  //     },
+  //   ],
+  // };
+  // const currencyChartOptions = {
+  //   responsive: true,
+  //   maintainAspectRatio: false,
+  //   legend: {
+  //     position: 'bottom',
+  //   },
+  // };
+
+  // BAR CHART DATA
+
+  const barChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    legend: {
-      position: 'bottom',
+    plugins: {
+      legend: {
+        position: 'top',
+      },
     },
+  };
+
+  const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
+
+  const barChartData = {
+    labels,
+    datasets: [
+      {
+        label: 'GBP',
+        data: [60, 40, 80, 20, 60, 40],
+        backgroundColor: 'rgba(251, 146, 60, 1)',
+      },
+    ],
   };
 
   const [showSideNav, setShowSideNav] = useState(false);
 
   return (
     <div>
-      <TopNavBar />
       <div className="flex h-screen flex-col bg-slate-100">
         {/* Navigation Bar */}
         <div className="flex w-full items-center justify-between bg-white p-2">
@@ -86,33 +109,23 @@ export default function Dashboard() {
           <div className="w-full flex-1 p-4 md:w-1/2">
             <SearchBar />
 
-            {/* 
-            
-            Graphs 
-
-            TODO: Fix flex/grid layout for graphs
-
-            */}
-            <div className="mt-8 flex flex-wrap space-x-0 space-y-2 md:space-x-4 md:space-y-0">
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <GraphCard
+                graphType="doughnut"
                 title="Categories"
                 data={categoriesChartData}
                 options={categoriesChartOptions}
               />
 
               <GraphCard
-                title="Currency"
-                data={currencyChartData}
-                options={currencyChartOptions}
-              />
-              <GraphCard
-                title="Currency"
-                data={currencyChartData}
-                options={currencyChartOptions}
+                graphType="bar"
+                title="Monthly Spend"
+                data={barChartData}
+                options={barChartOptions}
               />
             </div>
 
-            <Transactions />
+            <Transactions isSummary />
           </div>
         </div>
       </div>
