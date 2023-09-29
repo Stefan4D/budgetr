@@ -7,6 +7,7 @@ export default function Dashboard() {
     <div>
       <TopNavBar />
       <h4 className="border-t px-4 py-2 text-xl sm:border-none">Dashboard</h4>
+     
     </div>
   );
 }
