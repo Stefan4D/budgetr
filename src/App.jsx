@@ -12,15 +12,14 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/app" element={<Budgetr />} />
-        {/* 
-        Routes commencing with /app will include the content from the above route at present unless we use exact.
-        Not using exact at moment to allow workaround for nested routes, which aren't working right now 
-        */}
-        <Route path="/app/add" element={<AddExpense />} />
-        <Route path="/app/modify" element={<ModifyExpense />} />
-        <Route path="/app/view" element={<ViewExpenses />} />
-        <Route path="/app/dashboard" element={<Dashboard />} />
+        <Route path="/app" element={<Budgetr />}>
+          {/* Adjust this to be the 'home' route for the app */}
+          <Route path="/app" element={<Dashboard />} />
+          <Route path="/app/add" element={<AddExpense />} />
+          <Route path="/app/modify" element={<ModifyExpense />} />
+          <Route path="/app/view" element={<ViewExpenses />} />
+          <Route path="/app/dashboard" element={<Dashboard />} />
+        </Route>
         <Route path="*" element={<h1>Not Found!</h1>} />
       </Routes>
     </Router>
