@@ -43,6 +43,30 @@ export default function Dashboard() {
     },
   };
 
+  // BAR CHART DATA
+
+  const barChartOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+    },
+  };
+
+  const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
+
+  const barChartData = {
+    labels,
+    datasets: [
+      {
+        label: 'GBP',
+        data: [60, 40, 80, 20, 60, 40],
+        backgroundColor: 'rgba(251, 146, 60, 1)',
+      },
+    ],
+  };
+
   const [showSideNav, setShowSideNav] = useState(false);
 
   return (
@@ -93,20 +117,17 @@ export default function Dashboard() {
             */}
             <div className="mt-8 flex flex-wrap space-x-0 space-y-2 md:space-x-4 md:space-y-0">
               <GraphCard
+                graphType="doughnut"
                 title="Categories"
                 data={categoriesChartData}
                 options={categoriesChartOptions}
               />
 
               <GraphCard
-                title="Currency"
-                data={currencyChartData}
-                options={currencyChartOptions}
-              />
-              <GraphCard
-                title="Currency"
-                data={currencyChartData}
-                options={currencyChartOptions}
+                graphType="bar"
+                title="Monthly Spend"
+                data={barChartData}
+                options={barChartOptions}
               />
             </div>
 

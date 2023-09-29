@@ -1,11 +1,32 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+} from 'chart.js';
+import { Doughnut, Bar } from 'react-chartjs-2';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Tooltip,
+  Legend
+);
 
-export default function GraphCard({ title, data, options, className }) {
+export default function GraphCard({
+  graphType,
+  title,
+  data,
+  options,
+  className,
+}) {
   return (
     <div className={`flex-1 rounded-lg bg-white p-4 shadow ${className}`}>
       <h2 className="pb-1 text-lg font-semibold text-gray-500">{title}</h2>
@@ -23,7 +44,8 @@ export default function GraphCard({ title, data, options, className }) {
           width: '100%',
         }}
       >
-        <Doughnut data={data} options={options} />
+        {graphType === 'doughnut' && <Doughnut data={data} options={options} />}
+        {graphType === 'bar' && <Bar data={data} options={options} />}
       </div>
     </div>
   );
