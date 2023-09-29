@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaBars, FaBell, FaUser } from 'react-icons/fa';
-import TopNavBar from '../components/TopNavBar';
 import SideNav from '../components/Dashboard/SideNav';
 import GraphCard from '../components/Dashboard/GraphCard';
 import Transactions from '../components/Dashboard/Transactions';
@@ -48,7 +47,6 @@ export default function Dashboard() {
 
   return (
     <div>
-      <TopNavBar />
       <div className="flex h-screen flex-col bg-slate-100">
         {/* Navigation Bar */}
         <div className="flex w-full items-center justify-between bg-white p-2">
