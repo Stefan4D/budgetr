@@ -1,45 +1,64 @@
-// refactor this to be a custom hook
-import { useState, useEffect } from 'react';
-import { initializeUserStores, addUser } from '../utils/dbUtils';
+import React, { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+
+import useLocalForage from '../hooks/useLocalForage';
+
+import expenses from '../../__tests__/mockExpensesData';
+
+dayjs.extend(isBetween);
 
 export default function TestComponent() {
-  // Array to store user-specific localForage instances
-  const [userStores, setUserStores] = useState([]);
-  const [activeDB, setActiveDB] = useState(null);
+  const [transactions, setTransactions] = useState([]);
+  const [value, setValue, pending] = useLocalForage('stefan', expenses);
 
-  // Initialize user stores from the stored user list
   useEffect(() => {
-    // TODO: Need to refactor to properly handle async/await
-    // addUser('Alice');
-    // addUser('Bob');
+    console.log('useEffect: Getting localForage');
+    setTransactions(value); // set application state
+    console.table(value);
 
-    const registeredUsers = initializeUserStores();
-    setUserStores(registeredUsers);
+    const tx = transactions.filter((expense) => {
+      const date = dayjs(expense.date);
+      const startDate = dayjs('2022-01-01');
+      const endDate = dayjs('2022-12-31');
+      return date.isBetween(startDate, endDate);
+    });
+    console.log(tx.length);
+    console.table(tx);
+  }, []); // get localForage on first render
 
-    // Test case to select a user and retrieve a value from their localForage instance
-    const usernameToFind = 'Alice';
-    const loggedInUser = userStores.find(
-      (userStore) => userStore.username === usernameToFind
-    );
-    const userDB = loggedInUser ? loggedInUser.db : null;
+  useEffect(() => {
+    console.log('useEffect: Updating localForage');
+    setValue(transactions); // set localForage state
+  }, [transactions]); // update localForage when application state changes
 
-    setActiveDB(userDB);
-    console.log(activeDB);
+  // when adding an expense, must use the spread operator to add the new expense to the array
+  // setTransactions([...transactions, newExpense]);
+  // when deleting an expense, must filter out the expense to be deleted
+  // setTransactions(transactions.filter((expense) => expense.id !== expenseId));
+  // when editing an expense, must map through the array and replace the expense to be edited
+  // setTransactions(
+  //   transactions.map((expense) =>
+  //     expense.id === expenseId ? { ...expense, ...newExpense } : expense
+  //   )
+  // );
 
-    // activeDB
-    //   .getItem('db')
-    //   .then((value) => {
-    //     // Do something with the value
-    //     // set React state to the value retrieved
-    //   })
-    //   .catch((err) => {
-    //     // This code runs if there were any errors
-    //     console.log(err);
-    //   });
-
-    activeDB.setItem('db', [{ name: 'test' }, { name: 'test2' }]);
-    console.log(activeDB.getItem('db'));
-  }, []);
-
-  return <div>Test Component</div>;
+  return (
+    <div>
+      {pending && <p>Loading...</p>}
+      {transactions.map((expense) => (
+        <div key={uuidv4()}>
+          <p>{expense.description}</p>
+          <p>{expense.amount}</p>
+          <p>{expense.createdAt.toString()}</p>
+          <p>{expense.currency}</p>
+          <p>{expense.category}</p>
+          <p>{expense.notes}</p>
+          <p>{expense.convertedAmount}</p>
+          <p>{expense.date.toString()}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
