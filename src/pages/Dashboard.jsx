@@ -110,7 +110,7 @@ export default function Dashboard() {
               />
             </div>
 
-            <Transactions />
+            <Transactions isSummary />
           </div>
         </div>
       </div>

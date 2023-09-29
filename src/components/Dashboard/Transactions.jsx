@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 
-export default function Transactions() {
+export default function Transactions({ isSummary }) {
   return (
     <div className="mt-4 rounded-lg bg-white p-4 shadow">
       <div className="rounded-md bg-white">
@@ -156,15 +156,16 @@ export default function Transactions() {
             </tr>
           </tbody>
         </table>
-        {/* View more button */}
-        <div className="mt-4 text-right">
-          <button
-            type="button"
-            className="rounded border-2 border-slate-900 bg-slate-200 px-4 py-2 font-semibold hover:bg-slate-900 hover:text-white"
-          >
-            View more
-          </button>
-        </div>
+        {isSummary && (
+          <div className="mt-4 text-right">
+            <button
+              type="button"
+              className="rounded border-2 border-slate-900 bg-slate-200 px-4 py-2 font-semibold hover:bg-slate-900 hover:text-white"
+            >
+              View more
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
