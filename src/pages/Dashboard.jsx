@@ -51,7 +51,7 @@ export default function Dashboard() {
       <TopNavBar />
       <div className="flex h-screen flex-col bg-slate-100">
         {/* Navigation Bar */}
-        <div className="flex w-full items-center justify-between bg-white p-2  shadow">
+        <div className="flex w-full items-center justify-between bg-white p-2">
           <div className="flex items-center">
             <div className="mr-2 flex items-center md:hidden">
               <button
