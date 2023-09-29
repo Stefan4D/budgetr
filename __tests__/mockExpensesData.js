@@ -1,4 +1,4 @@
-import faker from 'faker';
+import { faker } from '@faker-js/faker';
 
 // generates 10 expenses with random data and put them in an array called expenses
 const expenses = [];
