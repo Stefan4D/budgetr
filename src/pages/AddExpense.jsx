@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../components/AddExpense/Form';
+import Form from '../components/AddExpense/form';
 
 export default function AddExpense() {
   return (
