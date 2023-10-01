@@ -81,8 +81,10 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="h-[calc(100vh-100px)] w-full  flex-1 p-4 sm:h-[calc(100vh-76px)] md:w-1/2">
-      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div className="min-h-[calc(100vh-100px)] w-full  flex-1 p-4 sm:min-h-[calc(100vh-76px)] md:w-1/2">
+      <h2 className="text-xl font-bold">Dashboard</h2>
+
+      <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <GraphCard
           graphType="doughnut"
           title="Categories"
