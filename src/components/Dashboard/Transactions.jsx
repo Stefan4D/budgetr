@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import dayjs from 'dayjs';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -33,7 +34,7 @@ export default function Transactions({ isSummary, transactions }) {
             </tr>
           </thead>
           <tbody>
-            {transactions.map((expense) => (
+            {transactions?.map((expense) => (
               <tr key={uuidv4()} className="hover:bg-slate-300">
                 <td className="border-b border-slate-500 px-4 py-2">
                   {expense.description}
@@ -42,7 +43,7 @@ export default function Transactions({ isSummary, transactions }) {
                   {dayjs(expense.date).format('DD/MM/YYYY')}
                 </td>
                 <td className="border-b border-slate-500 px-4 py-2 text-right">
-                  {expense.amount}
+                  {expense.convertedAmount}
                 </td>
                 <td className="border-b border-slate-500 px-4 py-2 text-right">
                   <div className="flex justify-end">
@@ -72,12 +73,13 @@ export default function Transactions({ isSummary, transactions }) {
         </table>
         {isSummary && (
           <div className="mt-4 text-right">
-            <button
+            <Link
+              to="/app/view"
               type="button"
               className="rounded border-2 border-slate-900 bg-slate-200 px-4 py-2 font-semibold hover:bg-slate-900 hover:text-white"
             >
               View more
-            </button>
+            </Link>
           </div>
         )}
       </div>

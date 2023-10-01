@@ -9,7 +9,7 @@ export default function TopNavBar() {
         <div className="sm:flex">
           <Link
             to="/"
-            className="justify-left font-brand p-3 text-3xl font-black text-white"
+            className="justify-left p-3 font-brand text-3xl font-black text-white"
           >
             Budget<span className="text-cyan-400">r</span>
           </Link>
@@ -56,15 +56,17 @@ export default function TopNavBar() {
                 View Expenses
               </Link>
             </li>
-            {/* <li className="flex items-center ">
+          </ul>
+          <ul className="border-t text-xl text-white sm:self-center sm:border-none">
+            <li className="flex items-center ">
               <Link
-                to="/"
+                to="/app"
                 className='className="hover:text-blue p-3 hover:text-cyan-400'
               >
                 <FaSignInAlt className="mr-2" />
                 <span>Sign in</span>
               </Link>
-            </li> */}
+            </li>
           </ul>
         </div>
       </div>

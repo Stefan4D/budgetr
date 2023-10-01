@@ -1,132 +1,212 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+/* eslint-disable no-console */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import dayjs from 'dayjs';
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import currency from 'currency.js';
+// import useFetch from '../../hooks/useFetch';
+import useLocalForage from '../../hooks/useLocalForage';
+import globals from '../../data/globals';
 
-export default function MyForm() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert('you have submitted the form');
+function Form({ viewMode = false }) {
+  const [databaseValue, setDatabaseValue] = useLocalForage(globals.db, []);
+
+  const [formData, setFormData] = useState({
+    id: uuidv4(), // unique id
+    description: '', // description of the expense
+    date: '', // date of the expense
+    amount: '', // amount in the currency of the expense
+    convertedAmount: '', // amount converted to the default currency
+    currency: 'GBP', // currency of the amount
+    category: '', // optional
+    notes: '', // optional
+    createdAt: dayjs(new Date()).format('DD/MM/YYYY'), // date of creation
+  });
+
+  const API_KEY = 'c52f82c58835781486a1e893';
+
+  const categories = [
+    { value: '', label: 'Select...' },
+    { value: 'Housing', label: 'Housing' },
+    { value: 'Transportation', label: 'Transportation' },
+    { value: 'Food', label: 'Food' },
+    { value: 'Utilities', label: 'Utilities' },
+    { value: 'Medical & Healthcare', label: 'Medical & Healthcare' },
+  ];
+
+  const currencies = [
+    { value: 'GBP', label: 'GBP' },
+    { value: 'USD', label: 'USD' },
+  ];
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.currency === 'USD') {
+      fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/GBP`, {
+        method: 'GET',
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error(response.statusText);
+        })
+        .then((data) => {
+          // console.log(data);
+          // console.log(data.conversion_rates.USD);
+          formData.convertedAmount = currency(formData.amount)
+            .divide(data.conversion_rates.USD)
+            .toString();
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        })
+        .finally(() => {
+          console.log(formData); // This will log the form data to the console
+          setDatabaseValue([...databaseValue, formData]); // This will add the form data to localForage
+        });
+    } else {
+      formData.convertedAmount = formData.amount;
+      console.log(formData); // This will log the form data to the console
+      setDatabaseValue([...databaseValue, formData]); // This will add the form data to localForage
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mx-2 my-4">
-      <div className="mx-2 my-4 flex items-start px-2 py-1 lg:flex lg:items-start">
-        <div className="grid grid-cols-2 gap-5">
-          <div
-            className="relative mb-3"
-            data-te-date-timepicker-init
-            data-te-input-wrapper-init
-          >
-            <label htmlFor="form1" data-te-select-label-ref>
-              Select of date :
+    <div className="p-10">
+      <form onSubmit={handleSubmit}>
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="sm:col-span-3">
+            <label>Select The date</label>
+            <div className="mt-2">
               <input
                 type="date"
-                className="peer-focus:text-primary dark:peer-focus:text-primary peer block min-h-[auto] w-full rounded border border-gray-400 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                className="peer-focus:text-primary dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-1 peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200"
                 id="form1"
+                name="date"
+                placeholder="Select The Date"
+                value={formData.date}
+                onChange={handleChange}
               />
-            </label>
+            </div>
           </div>
-
-          <div className="flex-col">
-            <label htmlFor="fom1" data-te-select-label-ref>
-              Select Categories{' '}
-            </label>
-            <select
-              name="category"
-              id="form1"
-              className="mx-2 w-full rounded border border-gray-400 bg-transparent px-1 px-3 py-[0.32rem] leading-[1.6]"
-              data-te-select-init
-            >
-              <option value="Housing">Housing</option>
-              <option value="Tranportation" defaultChecked>
-                Transportation
-              </option>
-              <option value="Food" defaultChecked>
-                Food
-              </option>
-              <option value="Utilities" defaultChecked>
-                Utilities
-              </option>
-              <option
+          <div className="sm:col-span-3">
+            <label>Select The Category</label>
+            <div className="mt-2">
+              <select
+                className="w-full sm:col-span-3"
+                data-te-select-init
                 name="category"
-                value="Medical & Healtcare"
-                defaultChecked
+                value={formData.category}
+                onChange={handleChange}
               >
-                Medical & Healthcare
-              </option>
-            </select>
+                {categories.map((category) => (
+                  <option key={category.value} value={category.value}>
+                    {category.label}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
-      </div>
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="sm:col-span-3">
+            <label>Description</label>
+            <div className="mt-2">
+              <input
+                type="text"
+                placeholder="Type Item name"
+                className="w-full border border-gray-400 px-2 py-1"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="sm:col-span-3">
+            <label>Amount</label>
+            <div className="mt-2">
+              <input
+                type="text"
+                placeholder="Add your price"
+                className="w-full border border-gray-400 px-2 py-1"
+                name="amount"
+                value={formData.amount}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="sm:col-span-3">
+            <label>Select Currency</label>
+            <div className="mt-2">
+              <select
+                className="w-full sm:col-span-3"
+                data-te-select-init
+                name="currency"
+                value={formData.currency}
+                onChange={handleChange}
+              >
+                {currencies.map((curr) => (
+                  <option key={curr.value} value={curr.value}>
+                    {curr.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
 
-      <div className="mx-2 my-4 flex-row items-center justify-between px-2 py-1 lg:flex lg:items-start lg:justify-between">
-        <div className="my-1 mb-2 flex px-4">
-          <label htmlFor="name">
-            Name
-            <input
-              id="name"
-              type="text"
-              name="names"
-              className="w-full rounded border border-gray-400 bg-transparent px-3 py-[0.32rem] leading-[1.6] "
-            />
-          </label>
+          {viewMode && (
+            <div className="sm:col-span-3">
+              <label>Converted Amount</label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  className="w-full border border-gray-400 px-2 py-1"
+                  name="price"
+                  value={formData.convertedAmount}
+                  onChange={handleChange}
+                  disabled
+                />
+              </div>
+            </div>
+          )}
         </div>
-        <div className="my-1 mb-2 flex px-4">
-          <label htmlFor="price">
-            Price
-            <input
-              id="price"
-              type="text"
-              name="prices"
-              className="w-full rounded border border-gray-400 bg-transparent px-3 py-[0.32rem] leading-[1.6] "
-            />
-          </label>
-        </div>
-        <div className="my-1 mb-2 flex px-4">
-          <label htmlFor="coount">
-            Count
-            <input
-              id="count"
-              type="number"
-              name="counts"
-              className="w-full rounded border border-gray-400 bg-transparent px-3 py-[0.32rem] leading-[1.6] "
-            />
-          </label>
-        </div>
-        <div className="my-1 mb-2 flex px-4">
-          <label htmlFor="description">
-            Description
-            <input
-              id="description"
-              type="text"
-              className="w-full rounded border border-gray-400 bg-transparent px-3 py-[0.32rem] leading-[1.6] "
-            />
-          </label>
-        </div>
-      </div>
-      <div className="my-1 mb-2 flex px-4">
-        <label
-          htmlFor="message"
-          className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-        >
-          Note
-          <textarea
-            id="message"
-            type="text"
-            rows={4}
-            cols={50}
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            placeholder="Write your notes here..."
-          />
-        </label>
-      </div>
 
-      <hr />
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="sm:col-span-6">
+            <label>Notes</label>
+            <textarea
+              id="message"
+              rows="4"
+              className="mt-2 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              placeholder="Write your notes here..."
+              name="notes"
+              value={formData.notes}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
 
-      <button
-        type="submit"
-        className="w-full bg-slate-500 py-3 text-center text-white hover:bg-gray-700"
-      >
-        Submit form
-      </button>
-    </form>
+        <div className="mt-5">
+          <button
+            type="submit"
+            className="w-full bg-purple-500 py-3 text-center text-white"
+          >
+            Add now
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
+
+export default Form;
