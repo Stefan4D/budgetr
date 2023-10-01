@@ -1,113 +1,123 @@
-import React from 'react';
+/* eslint-disable no-console */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState } from 'react';
 
-export default function MyForm() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert('you have submitted the form');
+function Form() {
+  const [formData, setFormData] = useState({
+    date: '',
+    category: '1',
+    itemName: '',
+    price: '',
+    notes: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData); // This will log the form data to the console
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mx-2 my-4">
-      <div className="mx-2 my-4 flex items-start px-2 py-1 lg:flex lg:items-start">
-        <div className="grid grid-cols-2 gap-5">
-          <div
-            className="relative mb-3"
-            data-te-date-timepicker-init
-            data-te-input-wrapper-init
-          >
-            <label htmlFor="form1" data-te-select-label-ref>
-              Select of date :
+    <div className="p-10">
+      <form onSubmit={handleSubmit}>
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="sm:col-span-3">
+            <label>Select The date</label>
+            <div className="mt-2">
               <input
                 type="date"
-                className="peer-focus:text-primary dark:peer-focus:text-primary peer block min-h-[auto] w-full rounded border border-gray-400 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                className="peer-focus:text-primary dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-1 peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200"
                 id="form1"
+                name="date"
+                placeholder="Select The Date"
+                value={formData.date}
+                onChange={handleChange}
               />
-            </label>
+            </div>
           </div>
-
-          <div className="flex-col">
-            <label htmlFor="fom1" data-te-select-label-ref>
-              Select Categories{' '}
-            </label>
-            <select
-              name="category"
-              id="form1"
-              className="mx-2 px-1"
-              data-te-select-init
-            >
-              <option value="Housing">Housing</option>
-              <option value="Tranportation" defaultChecked>
-                Transportation
-              </option>
-              <option value="Food" defaultChecked>
-                Food
-              </option>
-              <option value="Utilities" defaultChecked>
-                Utilities
-              </option>
-              <option
+          <div className="sm:col-span-3">
+            <label>Select The Category</label>
+            <div className="mt-2">
+              <select
+                className="w-full sm:col-span-3"
+                data-te-select-init
                 name="category"
-                value="Medical & Healtcare"
-                defaultChecked
+                value={formData.category}
+                onChange={handleChange}
               >
-                Medical & Healthcare
-              </option>
-            </select>
+                <option value="Null">Select..</option>
+                <option value="Housing">Housing</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Food">Food</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Medical">Medical & Healthcare</option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="mx-2 my-4 flex-row items-center justify-between px-2 py-1 lg:flex lg:items-start lg:justify-between">
-        <div className="my-1 mb-2 flex px-4">
-          <label htmlFor="name">
-            Name
-            <input id="name" type="text" name="names" />
-          </label>
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="sm:col-span-3">
+            <label>Item Name</label>
+            <div className="mt-2">
+              <input
+                type="text"
+                placeholder="Type Item name"
+                className="w-full border border-gray-400 px-2 py-1"
+                name="itemName"
+                value={formData.itemName}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="sm:col-span-3">
+            <label>Item Price</label>
+            <div className="mt-2">
+              <input
+                type="text"
+                placeholder="Add your price"
+                className="w-full border border-gray-400 px-2 py-1"
+                name="price"
+                value={formData.price}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
         </div>
-        <div className="my-1 mb-2 flex px-4">
-          <label htmlFor="price">
-            Price
-            <input id="price" type="text" name="prices" />
-          </label>
-        </div>
-        <div className="my-1 mb-2 flex px-4">
-          <label htmlFor="coount">
-            Count
-            <input id="count" type="number" name="counts" />
-          </label>
-        </div>
-        <div className="my-1 mb-2 flex px-4">
-          <label htmlFor="description">
-            Description
-            <input id="description" type="text" />
-          </label>
-        </div>
-      </div>
-      <div className="my-1 mb-2 flex px-4">
-        <label
-          htmlFor="message"
-          className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-        >
-          Note
-          <textarea
-            id="message"
-            type="text"
-            rows={4}
-            cols={50}
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            placeholder="Write your notes here..."
-          />
-        </label>
-      </div>
 
-      <hr />
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="sm:col-span-6">
+            <label>Notes</label>
+            <textarea
+              id="message"
+              rows="4"
+              className="mt-2 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              placeholder="Write your notes here..."
+              name="notes"
+              value={formData.notes}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
 
-      <button
-        type="submit"
-        className="w-full bg-slate-500 py-3 text-center text-white hover:bg-gray-700"
-      >
-        Submit form
-      </button>
-    </form>
+        <div className="mt-5">
+          <button
+            type="submit"
+            className="w-full bg-purple-500 py-3 text-center text-white"
+          >
+            Add now
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
+
+export default Form;

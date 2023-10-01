@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Tabs from '../components/tabs';
-import Form from '../components/AddExpense/form';
+import Form from '../components/AddExpense/Form';
 
 export default function AddExpense() {
   return (
@@ -13,7 +11,6 @@ export default function AddExpense() {
           </div>
         </div>
       </div>
-          <Tabs />
       <Form />
     </>
   );
