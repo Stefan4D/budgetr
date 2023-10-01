@@ -1,15 +1,36 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import dayjs from 'dayjs';
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-function Form() {
+function Form({ viewMode = false }) {
   const [formData, setFormData] = useState({
-    date: '',
-    category: '1',
-    itemName: '',
-    price: '',
-    notes: '',
+    id: uuidv4(), // unique id
+    description: '', // description of the expense
+    date: '', // date of the expense
+    amount: '', // amount in the currency of the expense
+    convertedAmount: '', // amount converted to the default currency
+    currency: 'GBP', // currency of the amount
+    category: '', // optional
+    notes: '', // optional
+    createdAt: dayjs(new Date()).format('DD/MM/YYYY'), // date of creation
   });
+
+  const categories = [
+    { value: '', label: 'Select...' },
+    { value: 'Housing', label: 'Housing' },
+    { value: 'Transportation', label: 'Transportation' },
+    { value: 'Food', label: 'Food' },
+    { value: 'Utilities', label: 'Utilities' },
+    { value: 'Medical & Healthcare', label: 'Medical & Healthcare' },
+  ];
+
+  const currencies = [
+    { value: 'GBP', label: 'GBP' },
+    { value: 'USD', label: 'USD' },
+  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,12 +73,11 @@ function Form() {
                 value={formData.category}
                 onChange={handleChange}
               >
-                <option value="Null">Select..</option>
-                <option value="Housing">Housing</option>
-                <option value="Transportation">Transportation</option>
-                <option value="Food">Food</option>
-                <option value="Utilities">Utilities</option>
-                <option value="Medical">Medical & Healthcare</option>
+                {categories.map((category) => (
+                  <option key={category.value} value={category.value}>
+                    {category.label}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -65,31 +85,65 @@ function Form() {
 
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div className="sm:col-span-3">
-            <label>Item Name</label>
+            <label>Description</label>
             <div className="mt-2">
               <input
                 type="text"
                 placeholder="Type Item name"
                 className="w-full border border-gray-400 px-2 py-1"
-                name="itemName"
-                value={formData.itemName}
+                name="description"
+                value={formData.description}
                 onChange={handleChange}
               />
             </div>
           </div>
           <div className="sm:col-span-3">
-            <label>Item Price</label>
+            <label>Amount</label>
             <div className="mt-2">
               <input
                 type="text"
                 placeholder="Add your price"
                 className="w-full border border-gray-400 px-2 py-1"
-                name="price"
-                value={formData.price}
+                name="amount"
+                value={formData.amount}
                 onChange={handleChange}
               />
             </div>
           </div>
+          <div className="sm:col-span-3">
+            <label>Select Currency</label>
+            <div className="mt-2">
+              <select
+                className="w-full sm:col-span-3"
+                data-te-select-init
+                name="currency"
+                value={formData.currency}
+                onChange={handleChange}
+              >
+                {currencies.map((currency) => (
+                  <option key={currency.value} value={currency.value}>
+                    {currency.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {viewMode && (
+            <div className="sm:col-span-3">
+              <label>Converted Amount</label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  className="w-full border border-gray-400 px-2 py-1"
+                  name="price"
+                  value={formData.convertedAmount}
+                  onChange={handleChange}
+                  disabled
+                />
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
