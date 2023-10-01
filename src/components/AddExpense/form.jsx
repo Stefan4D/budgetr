@@ -32,7 +32,7 @@ export default function MyForm() {
             <select
               name="category"
               id="form1"
-              className="mx-2 px-1"
+              className="mx-2 w-full rounded border border-gray-400 bg-transparent px-1 px-3 py-[0.32rem] leading-[1.6]"
               data-te-select-init
             >
               <option value="Housing">Housing</option>
@@ -61,25 +61,44 @@ export default function MyForm() {
         <div className="my-1 mb-2 flex px-4">
           <label htmlFor="name">
             Name
-            <input id="name" type="text" name="names" />
+            <input
+              id="name"
+              type="text"
+              name="names"
+              className="w-full rounded border border-gray-400 bg-transparent px-3 py-[0.32rem] leading-[1.6] "
+            />
           </label>
         </div>
         <div className="my-1 mb-2 flex px-4">
           <label htmlFor="price">
             Price
-            <input id="price" type="text" name="prices" />
+            <input
+              id="price"
+              type="text"
+              name="prices"
+              className="w-full rounded border border-gray-400 bg-transparent px-3 py-[0.32rem] leading-[1.6] "
+            />
           </label>
         </div>
         <div className="my-1 mb-2 flex px-4">
           <label htmlFor="coount">
             Count
-            <input id="count" type="number" name="counts" />
+            <input
+              id="count"
+              type="number"
+              name="counts"
+              className="w-full rounded border border-gray-400 bg-transparent px-3 py-[0.32rem] leading-[1.6] "
+            />
           </label>
         </div>
         <div className="my-1 mb-2 flex px-4">
           <label htmlFor="description">
             Description
-            <input id="description" type="text" />
+            <input
+              id="description"
+              type="text"
+              className="w-full rounded border border-gray-400 bg-transparent px-3 py-[0.32rem] leading-[1.6] "
+            />
           </label>
         </div>
       </div>
