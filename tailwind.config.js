@@ -2,7 +2,11 @@
 export default {
   content: ['./index.html', './src/**/*.{html,js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        brand: ['Nunito', 'sans-serif'],
+      },
+    },
+    plugins: [require('@tailwindcss/forms')],
   },
-  plugins: [require('@tailwindcss/forms')],
 };

@@ -1,13 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
 import { FaBars, FaBell, FaUser } from 'react-icons/fa';
+
+import useLocalForage from '../hooks/useLocalForage';
+
 import SideNav from '../components/Dashboard/SideNav';
 import GraphCard from '../components/Dashboard/GraphCard';
 import Transactions from '../components/Dashboard/Transactions';
 import SearchBar from '../components/Dashboard/SearchBar';
 
+import expenses from '../../__tests__/mockExpensesData';
+
+dayjs.extend(isBetween);
+
 export default function Dashboard() {
+  const [transactions, setTransactions] = useState([]);
+  const [value, setValue, pending] = useLocalForage('stefan', expenses);
+
+  useEffect(() => {
+    console.log('useEffect: Getting localForage');
+    setTransactions(value); // set application state
+    console.table(value);
+
+    // const tx = transactions.filter((expense) => {
+    //   const date = dayjs(expense.date);
+    //   const startDate = dayjs('2022-01-01');
+    //   const endDate = dayjs('2022-12-31');
+    //   return date.isBetween(startDate, endDate);
+    // });
+    // console.log(tx.length);
+    // console.table(tx);
+  }, []); // get localForage on first render
+
+  useEffect(() => {
+    console.log('useEffect: Updating localForage');
+    setValue(transactions); // set localForage state
+  }, [transactions]); // update localForage when application state changes
+
   // Sample graph data
   const categoriesChartData = {
     labels: ['Food', 'Beer'],
@@ -72,7 +103,8 @@ export default function Dashboard() {
 
   return (
     <div>
-      <div className="flex h-screen flex-col bg-slate-100">
+      {/* h-screen changed to h-100 */}
+      <div className="h-100 flex flex-col bg-slate-100">
         {/* Navigation Bar */}
         <div className="flex w-full items-center justify-between bg-white p-2">
           <div className="flex items-center">
@@ -125,7 +157,7 @@ export default function Dashboard() {
               />
             </div>
 
-            <Transactions isSummary />
+            <Transactions isSummary transactions={transactions} />
           </div>
         </div>
       </div>
