@@ -10,6 +10,7 @@ import {
 import TopNavBar from '../components/TopNavBar';
 import Footer from '../components/Footer';
 import Quote from '../components/Quote';
+import Img from '../assets/Logo.png';
 
 export default function Home() {
   return (
@@ -70,7 +71,7 @@ export default function Home() {
                 <img
                   alt=""
                   aria-hidden="true"
-                  src="https://placehold.co/400x400"
+                  src={Img}
                   decoding="async"
                   data-nimg="intrinsic"
                   style={{
@@ -92,7 +93,7 @@ export default function Home() {
               </span>
             </div>
             <div className="flex w-full flex-col items-center md:items-start">
-              <h1 className="font-heading mx-auto max-w-[19ch] text-center font-brand text-4xl font-black tracking-tight sm:text-5xl md:ml-0 md:text-left xl:text-6xl">
+              <h1 className="font-heading font-brand mx-auto max-w-[19ch] text-center text-4xl font-black tracking-tight sm:text-5xl md:ml-0 md:text-left xl:text-6xl">
                 Manage your spend like a pro with Budget
                 <span className="text-cyan-400">r</span>.
               </h1>
