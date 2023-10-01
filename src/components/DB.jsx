@@ -6,12 +6,13 @@ import isBetween from 'dayjs/plugin/isBetween';
 import useLocalForage from '../hooks/useLocalForage';
 
 import expenses from '../../__tests__/mockExpensesData';
+import globals from '../data/globals';
 
 dayjs.extend(isBetween);
 
 export default function TestComponent() {
   const [transactions, setTransactions] = useState([]);
-  const [value, setValue, pending] = useLocalForage('stefan', expenses);
+  const [value, setValue, pending] = useLocalForage(globals.db, expenses);
 
   useEffect(() => {
     console.log('useEffect: Getting localForage');

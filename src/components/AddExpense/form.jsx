@@ -4,8 +4,14 @@
 import dayjs from 'dayjs';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import currency from 'currency.js';
+// import useFetch from '../../hooks/useFetch';
+import useLocalForage from '../../hooks/useLocalForage';
+import globals from '../../data/globals';
 
 function Form({ viewMode = false }) {
+  const [databaseValue, setDatabaseValue] = useLocalForage(globals.db, []);
+
   const [formData, setFormData] = useState({
     id: uuidv4(), // unique id
     description: '', // description of the expense
@@ -17,6 +23,8 @@ function Form({ viewMode = false }) {
     notes: '', // optional
     createdAt: dayjs(new Date()).format('DD/MM/YYYY'), // date of creation
   });
+
+  const API_KEY = 'c52f82c58835781486a1e893';
 
   const categories = [
     { value: '', label: 'Select...' },
@@ -42,7 +50,35 @@ function Form({ viewMode = false }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // This will log the form data to the console
+    if (formData.currency === 'USD') {
+      fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/GBP`, {
+        method: 'GET',
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error(response.statusText);
+        })
+        .then((data) => {
+          // console.log(data);
+          // console.log(data.conversion_rates.USD);
+          formData.convertedAmount = currency(formData.amount)
+            .divide(data.conversion_rates.USD)
+            .toString();
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        })
+        .finally(() => {
+          console.log(formData); // This will log the form data to the console
+          setDatabaseValue([...databaseValue, formData]); // This will add the form data to localForage
+        });
+    } else {
+      formData.convertedAmount = formData.amount;
+      console.log(formData); // This will log the form data to the console
+      setDatabaseValue([...databaseValue, formData]); // This will add the form data to localForage
+    }
   };
 
   return (
@@ -120,9 +156,9 @@ function Form({ viewMode = false }) {
                 value={formData.currency}
                 onChange={handleChange}
               >
-                {currencies.map((currency) => (
-                  <option key={currency.value} value={currency.value}>
-                    {currency.label}
+                {currencies.map((curr) => (
+                  <option key={curr.value} value={curr.value}>
+                    {curr.label}
                   </option>
                 ))}
               </select>

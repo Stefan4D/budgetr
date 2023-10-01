@@ -7,6 +7,7 @@ import {
   FaPlusCircle,
   FaChartPie,
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function SideNav({ showSideNav }) {
   return (
@@ -16,13 +17,13 @@ export default function SideNav({ showSideNav }) {
       }`}
     >
       <nav>
-        <a
+        <Link
           className="my-2 block flex items-center rounded px-4 py-2.5 text-gray-500 transition duration-200 hover:bg-gradient-to-r hover:from-slate-800 hover:to-slate-800 hover:text-white"
           href="/"
         >
           <FaHome className="mr-2" />
           <span>Home</span>
-        </a>
+        </Link>
         <a
           className="my-2 block flex items-center rounded px-4 py-2.5 text-gray-500 transition duration-200 hover:bg-gradient-to-r hover:from-slate-800 hover:to-slate-800 hover:text-white"
           href="/"

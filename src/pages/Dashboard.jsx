@@ -11,13 +11,14 @@ import GraphCard from '../components/Dashboard/GraphCard';
 import Transactions from '../components/Dashboard/Transactions';
 import SearchBar from '../components/Dashboard/SearchBar';
 
-import expenses from '../../__tests__/mockExpensesData';
+// import expenses from '../../__tests__/mockExpensesData';
+import globals from '../data/globals';
 
 dayjs.extend(isBetween);
 
 export default function Dashboard() {
-  const [transactions, setTransactions] = useState([]);
-  const [value, setValue, pending] = useLocalForage('stefan', expenses);
+  const [transactions, setTransactions] = useState();
+  const [value, setValue, pending] = useLocalForage(globals.db);
 
   useEffect(() => {
     console.log('useEffect: Getting localForage');
@@ -32,12 +33,12 @@ export default function Dashboard() {
     // });
     // console.log(tx.length);
     // console.table(tx);
-  }, []); // get localForage on first render
+  }, [value]); // get localForage on first render
 
-  useEffect(() => {
-    console.log('useEffect: Updating localForage');
-    setValue(transactions); // set localForage state
-  }, [transactions]); // update localForage when application state changes
+  // useEffect(() => {
+  //   console.log('useEffect: Updating localForage');
+  //   setValue(transactions); // set localForage state
+  // }, [transactions]); // update localForage when application state changes
 
   // Sample graph data
   const categoriesChartData = {
@@ -157,7 +158,8 @@ export default function Dashboard() {
               />
             </div>
 
-            <Transactions isSummary transactions={transactions} />
+            {pending && <p>Loading...</p>}
+            {!pending && <Transactions isSummary transactions={transactions} />}
           </div>
         </div>
       </div>
