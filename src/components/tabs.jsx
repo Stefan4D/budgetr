@@ -1,102 +1,124 @@
 import React, { useState } from 'react';
+// Initialization for ES Users
 
-function Tabs() {
-  const [activeTab, setActiveTab] = useState('Expense List');
+function MyForm() {
+  const [formData, setFormData] = useState({
+    date: '',
+    category: '1',
+    itemName: '',
+    price: '',
+    notes: '',
+  });
 
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData); // This will log the form data to the console
   };
 
   return (
-    <div>
-      <div className="mb-4 flex">
-        <button
-          type="button"
-          onClick={() => handleTabClick('Expense List')}
-          className={`mr-2 rounded px-4 py-2 ${
-            activeTab === 'Expense List'
-              ? 'bg-blue-500 text-white'
-              : 'bg-blue-200 text-gray-800'
-          }`}
-        >
-          Expense List
-        </button>
-        <button
-          type="button"
-          onClick={() => handleTabClick('Input Expense')}
-          className={`rounded px-4 py-2 ${
-            activeTab === 'Input Expense'
-              ? 'bg-blue-500 text-white'
-              : 'bg-blue-200 text-gray-800'
-          }`}
-        >
-          Input Expense
-        </button>
-      </div>
-      <div>
-        {activeTab === 'Expense List' && <div>Expense List Content</div>}
-        {activeTab === 'Input Expense' && (
-          <div>
-            {' '}
-            <h1>Input Expense Content</h1>
-            <form action="#">
-              <div className="grid grid-cols-2 gap-5">
-                <input
-                  type="text"
-                  placeholder="Firstname"
-                  className="border border-gray-400 px-2 py-1"
-                />
-                <input
-                  type="text"
-                  placeholder="Surname"
-                  className="border border-gray-400 px-2 py-1"
-                />
-              </div>
-              <div className="mt-5">
-                <input
-                  type="text"
-                  placeholder="Email"
-                  className="w-full border border-gray-400 px-2 py-1"
-                />
-              </div>
-              <div className="mt-5">
-                <input
-                  type="password"
-                  placeholder="Password"
-                  className="w-full border border-gray-400 px-2 py-1"
-                />
-              </div>
-              <div className="mt-5">
-                <input
-                  type="password"
-                  placeholder="Confirm Password"
-                  className="w-full border border-gray-400 px-2 py-1"
-                />
-              </div>
-              <div className="mt-5">
-                <input type="checkbox" className="border border-gray-400" />
-                <span>
-                  I accept the{' '}
-                  <a href="#" className="font-semibold text-purple-500">
-                    Terms of Use
-                  </a>{' '}
-                  &{' '}
-                  <a href="#" className="font-semibold text-purple-500">
-                    Privacy Policy
-                  </a>
-                </span>
-              </div>
-              <div className="mt-5">
-                <button  type="button" w-full bg-purple-500 py-3 text-center text-white">
-                  Register Now
-                </button>
-              </div>
-            </form>
+    <div class = "p-10">
+    <form onSubmit={handleSubmit}>
+      <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div className="sm:col-span-3">
+          <label>Select The date</label>
+          <div className='mt-2'>
+            <input
+            type="date"
+            className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-1"
+            id="form1"
+            name="date"
+            placeholder='Select The Date'
+            value={formData.date}
+            onChange={handleChange}
+          />
           </div>
-        )}
+        </div>
+        <div className="sm:col-span-3">
+          <label>Select The Category</label>
+          <div className='mt-2'>
+        <select
+        className='sm:col-span-3 w-full'
+          data-te-select-init
+          name="category"
+          value={formData.category}
+          onChange={handleChange}
+        >
+          <option value="Null">Select..</option>
+          <option value="Housing">Housing</option>
+          <option value="Transportation">Transportation</option>
+          <option value="Food">Food</option>
+          <option value="Utilities">Utilities</option>
+          <option value="Medical">Medical & Healthcare</option>
+        </select>
       </div>
+      </div>
+      </div>
+     
+      <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+      <div className="sm:col-span-3">
+          <label>Item Name</label>
+          <div className='mt-2'>
+        <input
+          type="text"
+          placeholder="Type Item name"
+          className="w-full border border-gray-400 px-2 py-1"
+          name="itemName"
+          value={formData.itemName}
+          onChange={handleChange}
+        />
+      </div>
+      </div>
+      <div className="sm:col-span-3">
+          <label>Item Price</label>
+          <div className='mt-2'>
+        <input
+          type="text"
+          placeholder="Add your price"
+          className="w-full border border-gray-400 px-2 py-1"
+          name="price"
+          value={formData.price}
+          onChange={handleChange}
+        />
+        </div>
+      </div>
+      </div>
+
+      <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+      <div className="sm:col-span-6">
+          <label>Notes</label>
+          <div className='mt-2'></div>
+      <textarea
+        id="message"
+        rows="4"
+        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        placeholder="Write your notes here..."
+        name="notes"
+        value={formData.notes}
+        onChange={handleChange}
+      />
+      </div>
+      </div>
+
+
+      <div className="mt-5">
+        <button
+          type="submit"
+          className="w-full bg-purple-500 py-3 text-center text-white"
+        >
+          Add now
+        </button>
+      </div>
+    </form>
     </div>
   );
 }
 
-export default Tabs;
+export default MyForm;

@@ -9,6 +9,7 @@ import {
 } from 'react-icons/ci';
 import Footer from '../components/Footer';
 import TopNavBar from '../components/TopNavBar';
+import Tabs from '../components/tabs';
 
 export default function AddExpense() {
   return (
@@ -51,6 +52,8 @@ export default function AddExpense() {
           </div>
         </div>
       </div>
+
+      <Tabs />
       <Footer />
     </>
   );

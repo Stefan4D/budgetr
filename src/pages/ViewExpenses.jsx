@@ -10,8 +10,6 @@ export default function ViewExpenses() {
       <h4 className="border-t px-4 py-2 text-xl sm:border-none">
         View Expenses
       </h4>
-
-      <Tabs />
     </div>
   );
 }
