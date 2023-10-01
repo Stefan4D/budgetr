@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
-import { FaBars, FaBell, FaUser } from 'react-icons/fa';
 
 import useLocalForage from '../hooks/useLocalForage';
 
-import SideNav from '../components/Dashboard/SideNav';
 import GraphCard from '../components/Dashboard/GraphCard';
 import Transactions from '../components/Dashboard/Transactions';
-import SearchBar from '../components/Dashboard/SearchBar';
 
+// used for testing
 // import expenses from '../../__tests__/mockExpensesData';
 import globals from '../data/globals';
 
@@ -58,23 +55,6 @@ export default function Dashboard() {
     },
   };
 
-  // const currencyChartData = {
-  //   labels: ['USD', 'GBP'],
-  //   datasets: [
-  //     {
-  //       data: [60, 40],
-  //       backgroundColor: ['rgba(251, 146, 60, 1)', 'rgba(30, 41, 59, 0.5)'],
-  //     },
-  //   ],
-  // };
-  // const currencyChartOptions = {
-  //   responsive: true,
-  //   maintainAspectRatio: false,
-  //   legend: {
-  //     position: 'bottom',
-  //   },
-  // };
-
   // BAR CHART DATA
 
   const barChartOptions = {
@@ -100,69 +80,28 @@ export default function Dashboard() {
     ],
   };
 
-  const [showSideNav, setShowSideNav] = useState(false);
-
   return (
-    <div>
-      {/* h-screen changed to h-100 */}
-      <div className="h-100 flex flex-col bg-slate-100">
-        {/* Navigation Bar */}
-        <div className="flex w-full items-center justify-between bg-white p-2">
-          <div className="flex items-center">
-            <div className="mr-2 flex items-center md:hidden">
-              <button
-                type="button"
-                id="menuBtn"
-                onClick={() => setShowSideNav(!showSideNav)}
-              >
-                <FaBars className="text-lg text-gray-500" />
-              </button>
-            </div>
-            <div className="flex items-center">
-              <h2 className="text-xl font-bold">Dashboard</h2>
-            </div>
-          </div>
+    <div className="min-h-[calc(100vh-100px)] w-full  flex-1 p-4 sm:min-h-[calc(100vh-76px)] md:w-1/2">
+      <h2 className="text-xl font-bold">Dashboard</h2>
 
-          {/* Notification Bell Icon */}
-          <div className="space-x-5">
-            <button type="button">
-              <FaBell className="text-lg text-gray-500" />
-            </button>
-            {/* Profile Button */}
-            <button type="button">
-              <FaUser className="text-lg text-gray-500" />
-            </button>
-          </div>
-        </div>
+      <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <GraphCard
+          graphType="doughnut"
+          title="Categories"
+          data={categoriesChartData}
+          options={categoriesChartOptions}
+        />
 
-        {/* Main Content */}
-        <div className="flex flex-1 flex-wrap">
-          <SideNav showSideNav={showSideNav} />
-          {/* Main content */}
-          <div className="w-full flex-1 p-4 md:w-1/2">
-            <SearchBar />
-
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <GraphCard
-                graphType="doughnut"
-                title="Categories"
-                data={categoriesChartData}
-                options={categoriesChartOptions}
-              />
-
-              <GraphCard
-                graphType="bar"
-                title="Monthly Spend"
-                data={barChartData}
-                options={barChartOptions}
-              />
-            </div>
-
-            {pending && <p>Loading...</p>}
-            {!pending && <Transactions isSummary transactions={transactions} />}
-          </div>
-        </div>
+        <GraphCard
+          graphType="bar"
+          title="Monthly Spend"
+          data={barChartData}
+          options={barChartOptions}
+        />
       </div>
+
+      {pending && <p>Loading...</p>}
+      {!pending && <Transactions isSummary transactions={transactions} />}
     </div>
   );
 }

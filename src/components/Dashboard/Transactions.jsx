@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import dayjs from 'dayjs';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function Transactions({ isSummary, transactions }) {
+  const navigate = useNavigate();
   return (
     <div className="mt-4 rounded-lg bg-white p-4 shadow">
       <div className="rounded-md bg-white">
@@ -50,6 +51,9 @@ export default function Transactions({ isSummary, transactions }) {
                     <button
                       type="button"
                       className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                      onClick={() =>
+                        navigate(`/app/view/${expense.id}`, { state: expense })
+                      }
                     >
                       <FaEye />
                     </button>

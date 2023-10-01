@@ -6,6 +6,7 @@ import AddExpense from './pages/AddExpense';
 import ModifyExpense from './pages/ModifyExpense';
 import ViewExpenses from './pages/ViewExpenses';
 import Dashboard from './pages/Dashboard';
+import ViewSingleExpense from './pages/ViewSingleExpense';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/app" element={<Dashboard />} />
           <Route path="/app/add" element={<AddExpense />} />
           <Route path="/app/modify" element={<ModifyExpense />} />
+          <Route path="/app/view/:expenseId" element={<ViewSingleExpense />} />
           <Route path="/app/view" element={<ViewExpenses />} />
           <Route path="/app/dashboard" element={<Dashboard />} />
         </Route>
