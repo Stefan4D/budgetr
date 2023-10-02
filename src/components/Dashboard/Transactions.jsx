@@ -57,7 +57,7 @@ export default function Transactions({ isSummary, transactions }) {
                     >
                       <FaEye />
                     </button>
-                    <button
+                    {/* <button
                       type="button"
                       className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
                     >
@@ -68,7 +68,7 @@ export default function Transactions({ isSummary, transactions }) {
                       className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
                     >
                       <FaTrash />
-                    </button>
+                    </button> */}
                   </div>
                 </td>
               </tr>
