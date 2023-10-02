@@ -2,11 +2,14 @@ import React from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+
 export default function TopNavBar() {
+
   return (
     <nav className="bg-slate-800 shadow-lg">
       <div className="max-auto container">
         <div className="sm:flex">
+          
           <Link
             to="/"
             className="justify-left p-3 font-brand text-3xl font-black text-white"
@@ -14,7 +17,7 @@ export default function TopNavBar() {
             Budget<span className="text-cyan-400">r</span>
           </Link>
 
-          <ul className="border-t text-xl text-white sm:self-center sm:border-none">
+          <ul className="border-t text-xl text-white sm:self-center sm:border-none  ">
             <li className="justify-right sm:inline-block">
               <Link
                 to="/"
@@ -69,7 +72,7 @@ export default function TopNavBar() {
             </li>
           </ul>
         </div>
-      </div>
+      </div>  
     </nav>
   );
 }

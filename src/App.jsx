@@ -8,6 +8,7 @@ import ViewExpenses from './pages/ViewExpenses';
 import Dashboard from './pages/Dashboard';
 import ViewSingleExpense from './pages/ViewSingleExpense';
 
+
 function App() {
   return (
     <Router>
@@ -21,6 +22,8 @@ function App() {
           <Route path="/app/view/:expenseId" element={<ViewSingleExpense />} />
           <Route path="/app/view" element={<ViewExpenses />} />
           <Route path="/app/dashboard" element={<Dashboard />} />
+          
+          
         </Route>
         <Route path="*" element={<h1>Not Found!</h1>} />
       </Routes>

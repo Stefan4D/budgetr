@@ -12,12 +12,13 @@ import Footer from '../components/Footer';
 import Quote from '../components/Quote';
 import Img from '../assets/Logo.png';
 
+
 export default function Home() {
   return (
     <>
       <TopNavBar />
 
-      <div className="flex min-h-[calc(100vh-100px)] flex-grow flex-col sm:min-h-[calc(100vh-76px)]">
+      <div className="flex min-h-[calc(100vh-100px)] flex-grow flex-col sm:min-h-[calc(100vh-76px)] bg-slate-600 ">
         <header className="w-full px-8 pb-16 pt-10 sm:pb-28 sm:pt-28">
           <div className="mx-auto flex w-full max-w-screen-xl flex-col items-center justify-center gap-16 md:flex-row">
             <div className="flex w-80 items-center justify-center md:w-auto lg:flex-shrink-0">
@@ -97,7 +98,7 @@ export default function Home() {
                 Manage your spend like a pro with Budget
                 <span className="text-cyan-400">r</span>.
               </h1>
-              <p className="max-w-lg pt-5 text-center text-lg sm:text-xl md:text-left">
+              <p className="max-w-lg pt-5 text-center text-lg sm:text-xl md:text-left text-slate-400 ">
                 Level-up your spending, seize control of your finances and take
                 the wheel on your money with the number one budgeting app from
                 FinanceFlow.
@@ -111,7 +112,7 @@ export default function Home() {
         </div>
 
         <div className="flex items-center justify-center gap-2 space-x-2">
-          <Link to="/" className="text-slate-500">
+          <Link to="/" className="text-slate-300">
             <CiBadgeDollar className="text-[30px]" />
           </Link>
           <Link to="/" className="text-slate-500">
