@@ -19,11 +19,6 @@ export default function TopNavBar() {
           >
             Go to App
           </Link>
-          {/* <ul className="border-t text-xl text-white sm:self-center sm:border-none">
-            <li className="justify-right sm:inline-block">
-              
-            </li>
-          </ul> */}
         </div>
       </div>
     </nav>
