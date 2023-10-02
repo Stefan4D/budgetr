@@ -5,8 +5,9 @@ import {
   FaExchangeAlt,
   FaSignOutAlt,
   FaPlusCircle,
-  FaChartPie,
+  // FaChartPie,
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function SideNav({ showSideNav }) {
   return (
@@ -16,47 +17,47 @@ export default function SideNav({ showSideNav }) {
       }`}
     >
       <nav>
-        <a
+        <Link
           className="my-2 block flex items-center rounded px-4 py-2.5 text-gray-500 transition duration-200 hover:bg-gradient-to-r hover:from-slate-800 hover:to-slate-800 hover:text-white"
-          href="/"
+          to="/app"
         >
           <FaHome className="mr-2" />
           <span>Home</span>
-        </a>
-        <a
+        </Link>
+        <Link
           className="my-2 block flex items-center rounded px-4 py-2.5 text-gray-500 transition duration-200 hover:bg-gradient-to-r hover:from-slate-800 hover:to-slate-800 hover:text-white"
-          href="/"
+          to="/app/add"
         >
           <FaPlusCircle className="mr-2" />
           <span>Add Expense</span>
-        </a>
-        <a
+        </Link>
+        <Link
           className="my-2 block flex items-center rounded px-4 py-2.5 text-gray-500 transition duration-200 hover:bg-gradient-to-r hover:from-slate-800 hover:to-slate-800 hover:text-white"
-          href="/"
+          to="/app/view"
         >
           <FaExchangeAlt className="mr-2" />
-          <span>Transactions</span>
-        </a>
+          <span>View Expenses</span>
+        </Link>
 
-        <a
+        {/* <Link
           className="my-2 block flex items-center rounded px-4 py-2.5 text-gray-500 transition duration-200 hover:bg-gradient-to-r hover:from-slate-800 hover:to-slate-800 hover:text-white"
-          href="/"
+          to="/"
         >
           <FaChartPie className="mr-2" />
           <span>Dashboard</span>
-        </a>
+        </Link> */}
       </nav>
 
       {/* Logout button */}
-      <a
+      <Link
         className="my-2 mt-auto block flex items-center rounded px-4 py-2.5 text-gray-500 transition duration-200 hover:bg-gradient-to-r hover:from-slate-800 hover:to-slate-800 hover:text-white"
-        href="/"
+        to="/"
       >
         {/* my-4 block flex items-center rounded px-4 py-2.5 text-gray-500 transition duration-200 hover:bg-gradient-to-r hover:from-slate-800 hover:to-slate-800 hover:text-white */}
         <FaSignOutAlt className="mr-2" />
         {/* <i className="fas fa-sign-out-alt mr-2" /> */}
         <span>Logout</span>
-      </a>
+      </Link>
 
       {/* Horizontal line separator */}
       <div className="mt-2 h-px bg-gradient-to-r from-slate-300 to-slate-800" />

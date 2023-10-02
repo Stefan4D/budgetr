@@ -1,7 +1,12 @@
+/* eslint-disable react/prop-types */
+import dayjs from 'dayjs';
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
+import { v4 as uuidv4 } from 'uuid';
 
-export default function Transactions({ isSummary }) {
+export default function Transactions({ isSummary, transactions }) {
+  const navigate = useNavigate();
   return (
     <div className="mt-4 rounded-lg bg-white p-4 shadow">
       <div className="rounded-md bg-white">
@@ -30,140 +35,55 @@ export default function Transactions({ isSummary }) {
             </tr>
           </thead>
           <tbody>
-            <tr className="hover:bg-slate-300">
-              <td className="border-b border-slate-500 px-4 py-2">Food</td>
-              <td className="border-b border-slate-500 px-4 py-2">
-                27/07/2023
-              </td>
-              <td className="border-b border-slate-500 px-4 py-2 text-right">
-                $1500
-              </td>
-              <td className="border-b border-slate-500 px-4 py-2 text-right">
-                <div className="flex justify-end">
-                  <button
-                    type="button"
-                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
-                  >
-                    <FaEye />
-                  </button>
-                  <button
-                    type="button"
-                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
-                  >
-                    <FaEdit />
-                  </button>
-                  <button
-                    type="button"
-                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr className="hover:bg-slate-300">
-              <td className="border-b border-slate-500 px-4 py-2">Beer</td>
-              <td className="border-b border-slate-500 px-4 py-2">
-                02/08/2023
-              </td>
-              <td className="border-b border-slate-500 px-4 py-2 text-right">
-                $1950
-              </td>
-              <td className="border-b border-slate-500 px-4 py-2 text-right">
-                <div className="flex justify-end">
-                  <button
-                    type="button"
-                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
-                  >
-                    <FaEye />
-                  </button>
-                  <button
-                    type="button"
-                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
-                  >
-                    <FaEdit />
-                  </button>
-                  <button
-                    type="button"
-                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr className="hover:bg-slate-300">
-              <td className="border-b border-slate-500 px-4 py-2">Beer</td>
-              <td className="border-b border-slate-500 px-4 py-2">
-                03/08/2023
-              </td>
-              <td className="border-b border-slate-500 px-4 py-2 text-right">
-                $1850
-              </td>
-              <td className="border-b border-slate-500 px-4 py-2 text-right">
-                <div className="flex justify-end">
-                  <button
-                    type="button"
-                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
-                  >
-                    <FaEye />
-                  </button>
-                  <button
-                    type="button"
-                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
-                  >
-                    <FaEdit />
-                  </button>
-                  <button
-                    type="button"
-                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr className="hover:bg-slate-300">
-              <td className="border-b border-slate-500 px-4 py-2">Food</td>
-              <td className="border-b border-slate-500 px-4 py-2">
-                04/08/2023
-              </td>
-              <td className="border-b border-slate-500 px-4 py-2 text-right">
-                $2300
-              </td>
-              <td className="border-b border-slate-500 px-4 py-2 text-right">
-                <div className="flex justify-end">
-                  <button
-                    type="button"
-                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
-                  >
-                    <FaEye />
-                  </button>
-                  <button
-                    type="button"
-                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
-                  >
-                    <FaEdit />
-                  </button>
-                  <button
-                    type="button"
-                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
-              </td>
-            </tr>
+            {transactions?.map((expense) => (
+              <tr key={uuidv4()} className="hover:bg-slate-300">
+                <td className="border-b border-slate-500 px-4 py-2">
+                  {expense.description}
+                </td>
+                <td className="border-b border-slate-500 px-4 py-2">
+                  {dayjs(expense.date).format('DD/MM/YYYY')}
+                </td>
+                <td className="border-b border-slate-500 px-4 py-2 text-right">
+                  {expense.convertedAmount}
+                </td>
+                <td className="border-b border-slate-500 px-4 py-2 text-right">
+                  <div className="flex justify-end">
+                    <button
+                      type="button"
+                      className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                      onClick={() =>
+                        navigate(`/app/view/${expense.id}`, { state: expense })
+                      }
+                    >
+                      <FaEye />
+                    </button>
+                    <button
+                      type="button"
+                      className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                    >
+                      <FaEdit />
+                    </button>
+                    <button
+                      type="button"
+                      className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                    >
+                      <FaTrash />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
         {isSummary && (
           <div className="mt-4 text-right">
-            <button
+            <Link
+              to="/app/view"
               type="button"
               className="rounded border-2 border-slate-900 bg-slate-200 px-4 py-2 font-semibold hover:bg-slate-900 hover:text-white"
             >
               View more
-            </button>
+            </Link>
           </div>
         )}
       </div>
