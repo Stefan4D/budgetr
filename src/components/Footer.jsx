@@ -8,7 +8,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="rounded-lg bg-slate-800 px-2 py-20 text-white lg:px-48  ">
+    <footer className="rounded-lg bg-slate-800 px-2 py-20 text-white lg:px-48 ">
       <div className="grid-col-1 container mx-auto mb-8 grid md:grid-cols-4 ">
         <div className="mb-4 px-2 md:mb-4">
           <h1 className="justify-left font-brand p-3 text-3xl font-black text-white">
