@@ -20,11 +20,7 @@ export default function ViewExpenses() {
         <h2 className="text-xl font-bold">View Expenses</h2>
         <Transactions transactions={transactions} />
       </div>
-    </div> */}
-</div>
-
-
-
+    </div>
   );
 }
 
