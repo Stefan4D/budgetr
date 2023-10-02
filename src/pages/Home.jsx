@@ -1,12 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import {
-  CiBadgeDollar,
-  CiMoneyBill,
-  CiShoppingBasket,
-  CiWallet,
-  CiStar,
-} from 'react-icons/ci';
+
 import TopNavBar from '../components/TopNavBar';
 import Footer from '../components/Footer';
 import Quote from '../components/Quote';
@@ -93,7 +86,7 @@ export default function Home() {
               </span>
             </div>
             <div className="flex w-full flex-col items-center md:items-start">
-              <h1 className="font-heading font-brand mx-auto max-w-[19ch] text-center text-4xl font-black tracking-tight sm:text-5xl md:ml-0 md:text-left xl:text-6xl">
+              <h1 className="font-heading font-brand mb-6 mx-auto max-w-[19ch] text-center text-4xl font-black tracking-tight sm:text-5xl md:ml-0 md:text-left xl:text-6xl">
                 Manage your spend like a pro with Budget
                 <span className="text-cyan-400">r</span>.
               </h1>
@@ -106,35 +99,8 @@ export default function Home() {
           </div>
         </header>
 
-        <div className="mx-auto max-w-screen-md">
-          <Quote />
-        </div>
-
-        <div className="flex items-center justify-center gap-2 space-x-2">
-          <Link to="/" className="text-slate-500">
-            <CiBadgeDollar className="text-[30px]" />
-          </Link>
-          <Link to="/" className="text-slate-500">
-            <CiMoneyBill className="text-[30px]" />
-          </Link>
-          <Link to="/" className="text-slate-500">
-            <CiShoppingBasket className="text-[30px]" />
-          </Link>
-          <Link to="/" className="text-slate-500">
-            <CiWallet className="text-[30px]" />
-          </Link>
-          <Link to="/" className="text-slate-500">
-            <CiStar className="text-[30px]" />
-          </Link>
-        </div>
+        <Quote />
       </div>
-
-      <Link
-        className="mx-2 flex flex-col justify-center rounded-lg p-1 text-center text-slate-800 hover:bg-slate-500 hover:text-slate-50"
-        to="/app"
-      >
-        Go to App
-      </Link>
       <Footer />
     </>
   );
