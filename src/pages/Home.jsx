@@ -1,12 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import {
-  CiBadgeDollar,
-  CiMoneyBill,
-  CiShoppingBasket,
-  CiWallet,
-  CiStar,
-} from 'react-icons/ci';
+
 import TopNavBar from '../components/TopNavBar';
 import Footer from '../components/Footer';
 import Quote from '../components/Quote';
@@ -69,7 +62,7 @@ export default function Home() {
                   />
                 </span>
                 <img
-                  alt=""
+                  alt="profile picture"
                   aria-hidden="true"
                   src={Img}
                   decoding="async"
@@ -109,32 +102,7 @@ export default function Home() {
         <div className="mx-auto max-w-screen-md">
           <Quote />
         </div>
-
-        <div className="flex items-center justify-center gap-2 space-x-2">
-          <Link to="/" className="text-slate-500">
-            <CiBadgeDollar className="text-[30px]" />
-          </Link>
-          <Link to="/" className="text-slate-500">
-            <CiMoneyBill className="text-[30px]" />
-          </Link>
-          <Link to="/" className="text-slate-500">
-            <CiShoppingBasket className="text-[30px]" />
-          </Link>
-          <Link to="/" className="text-slate-500">
-            <CiWallet className="text-[30px]" />
-          </Link>
-          <Link to="/" className="text-slate-500">
-            <CiStar className="text-[30px]" />
-          </Link>
-        </div>
       </div>
-
-      <Link
-        className="mx-2 flex flex-col justify-center rounded-lg p-1 text-center text-slate-800 hover:bg-slate-500 hover:text-slate-50"
-        to="/app"
-      >
-        Go to App
-      </Link>
       <Footer />
     </>
   );
