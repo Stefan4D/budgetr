@@ -62,7 +62,7 @@ export default function Home() {
                   />
                 </span>
                 <img
-                  alt=""
+                  alt="profile picture"
                   aria-hidden="true"
                   src={Img}
                   decoding="async"
@@ -99,7 +99,10 @@ export default function Home() {
           </div>
         </header>
 
+
         <Quote />
+       
+
       </div>
       <Footer />
     </>

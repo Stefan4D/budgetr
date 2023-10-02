@@ -8,7 +8,7 @@ export default function TopNavBar() {
         <div className="flex">
           <Link
             to="/"
-            className="justify-left p-3 font-brand text-3xl font-black text-white"
+            className="justify-left font-brand p-3 text-3xl font-black text-white"
           >
             Budget<span className="text-cyan-400">r</span>
           </Link>
