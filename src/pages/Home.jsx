@@ -10,8 +10,8 @@ export default function Home() {
     <>
       <TopNavBar />
 
-      <div className="flex min-h-[calc(100vh-100px)] flex-grow flex-col sm:min-h-[calc(100vh-76px)]">
-        <header className="w-full px-8 pb-16 pt-10 sm:pb-28 sm:pt-28">
+      <div className="mb-5 flex min-h-[calc(100vh-100px)] flex-grow flex-col sm:min-h-[calc(100vh-76px)]">
+        <header className="w-full px-8 pb-10 pt-10 sm:pb-28 sm:pt-28">
           <div className="mx-auto flex w-full max-w-screen-xl flex-col items-center justify-center gap-16 md:flex-row">
             <div className="flex w-80 items-center justify-center md:w-auto lg:flex-shrink-0">
               <span
@@ -86,7 +86,7 @@ export default function Home() {
               </span>
             </div>
             <div className="flex w-full flex-col items-center md:items-start">
-              <h1 className="font-heading font-brand mb-6 mx-auto max-w-[19ch] text-center text-4xl font-black tracking-tight sm:text-5xl md:ml-0 md:text-left xl:text-6xl">
+              <h1 className="font-heading mx-auto mb-6 max-w-[19ch] text-center font-brand text-4xl font-black tracking-tight sm:text-5xl md:ml-0 md:text-left xl:text-6xl">
                 Manage your spend like a pro with Budget
                 <span className="text-cyan-400">r</span>.
               </h1>
@@ -99,10 +99,28 @@ export default function Home() {
           </div>
         </header>
 
-
-        <Quote />
-       
-
+        <div className="grid-col-1 container mx-auto mb-4 grid lg:grid-cols-2 ">
+          <Quote
+            quote="Comparing Budgetr to other budgeting apps is like comparing a racehorse to a donkey. Budgetr is the racehorse. It's the best budgeting app I've ever used."
+            author="A.N. Other"
+            company="CFO at MoneyBags LLC"
+          />
+          <Quote
+            quote="Too many people spend money they have not earned, to buy things they do not want, to impress people that they do not like."
+            author="A.N. Other"
+            company="Will Rogers Inc"
+          />
+          <Quote
+            quote="Budgeting is not just for people who do not have enough money. It is for everyone who wants to ensure that their money is enough."
+            author="Rosette Mugidde Wamambe"
+            company="Big Company GmbH"
+          />
+          <Quote
+            quote="Budgeting has only one rule: Do not go over budget. Budgetr helps you stay on track and keep your finances in check."
+            author="Leslie Tayne"
+            company="Tayne Law Group"
+          />
+        </div>
       </div>
       <Footer />
     </>
