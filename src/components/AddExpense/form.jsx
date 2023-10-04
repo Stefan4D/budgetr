@@ -73,7 +73,14 @@ function Form({ viewMode = false }) {
         })
         .finally(() => {
           console.log(formData); // This will log the form data to the console
-          setDatabaseValue([...databaseValue, formData]); // This will add the form data to localForage
+          setDatabaseValue([
+            ...databaseValue,
+            {
+              ...formData,
+              description: formData.description.trim(),
+              notes: formData.notes.trim(),
+            },
+          ]); // This will add the form data to localForage and trim the description and notes
           setFormData({
             id: uuidv4(), // unique id
             description: '', // description of the expense
@@ -89,7 +96,14 @@ function Form({ viewMode = false }) {
     } else {
       formData.convertedAmount = formData.amount;
       console.log(formData); // This will log the form data to the console
-      setDatabaseValue([...databaseValue, formData]); // This will add the form data to localForage
+      setDatabaseValue([
+        ...databaseValue,
+        {
+          ...formData,
+          description: formData.description.trim(),
+          notes: formData.notes.trim(),
+        },
+      ]); // This will add the form data to localForage and trim the description and notes
       setFormData({
         id: uuidv4(), // unique id
         description: '', // description of the expense
