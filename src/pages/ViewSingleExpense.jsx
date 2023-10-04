@@ -89,7 +89,6 @@ export default function ViewSingleExpense() {
                 <div className="mt-2">
                   <input
                     type="text"
-                    placeholder="Description of the expense"
                     className="w-full rounded border border-gray-400 px-3 py-2"
                     name="description"
                     value={description}
@@ -102,7 +101,6 @@ export default function ViewSingleExpense() {
                 <div className="mt-2">
                   <input
                     type="text"
-                    placeholder="Full amount e.g. 10.00"
                     className="w-full rounded border border-gray-400 px-3 py-2"
                     name="amount"
                     value={amount}
@@ -147,7 +145,6 @@ export default function ViewSingleExpense() {
                   id="message"
                   rows="4"
                   className="mt-2 block w-full rounded border border-gray-400 p-2.5 focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="Write any additional notes you want to record here..."
                   name="notes"
                   value={notes}
                   disabled
