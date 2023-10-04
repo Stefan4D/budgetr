@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import currency from 'currency.js';
+import { FaRegCalendarAlt } from 'react-icons/fa';
 // import useFetch from '../../hooks/useFetch';
 import useLocalForage from '../../hooks/useLocalForage';
 import globals from '../../data/globals';
@@ -21,7 +22,7 @@ function Form({ viewMode = false }) {
     currency: 'GBP', // currency of the amount
     category: '', // optional
     notes: '', // optional
-    createdAt: dayjs(new Date()).format('DD/MM/YYYY'), // date of creation
+    createdAt: dayjs(new Date()).format('YYYY-MM-DD'), // date of creation
   });
 
   const API_KEY = 'c52f82c58835781486a1e893';
@@ -72,12 +73,48 @@ function Form({ viewMode = false }) {
         })
         .finally(() => {
           console.log(formData); // This will log the form data to the console
-          setDatabaseValue([...databaseValue, formData]); // This will add the form data to localForage
+          setDatabaseValue([
+            ...databaseValue,
+            {
+              ...formData,
+              description: formData.description.trim(),
+              notes: formData.notes.trim(),
+            },
+          ]); // This will add the form data to localForage and trim the description and notes
+          setFormData({
+            id: uuidv4(), // unique id
+            description: '', // description of the expense
+            date: '', // date of the expense
+            amount: '', // amount in the currency of the expense
+            convertedAmount: '', // amount converted to the default currency
+            currency: 'GBP', // currency of the amount
+            category: '', // optional
+            notes: '', // optional
+            createdAt: dayjs(new Date()).format('YYYY-MM-DD'), // date of creation
+          });
         });
     } else {
       formData.convertedAmount = formData.amount;
       console.log(formData); // This will log the form data to the console
-      setDatabaseValue([...databaseValue, formData]); // This will add the form data to localForage
+      setDatabaseValue([
+        ...databaseValue,
+        {
+          ...formData,
+          description: formData.description.trim(),
+          notes: formData.notes.trim(),
+        },
+      ]); // This will add the form data to localForage and trim the description and notes
+      setFormData({
+        id: uuidv4(), // unique id
+        description: '', // description of the expense
+        date: '', // date of the expense
+        amount: '', // amount in the currency of the expense
+        convertedAmount: '', // amount converted to the default currency
+        currency: 'GBP', // currency of the amount
+        category: '', // optional
+        notes: '', // optional
+        createdAt: dayjs(new Date()).format('YYYY-MM-DD'), // date of creation
+      });
     }
   };
 
@@ -87,7 +124,7 @@ function Form({ viewMode = false }) {
         <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div className="sm:col-span-3">
             <label>Expense Date:</label>
-            <div className="mt-2">
+            <div className="relative mt-2">
               <input
                 type="date"
                 className="w-full rounded border border-gray-400 px-3 py-2"
@@ -97,6 +134,11 @@ function Form({ viewMode = false }) {
                 onChange={handleChange}
                 required
               />
+              <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2.5">
+                <span className="after:content-[attr(data-icon)]">
+                  <FaRegCalendarAlt className="h-5 w-5 text-black" />
+                </span>
+              </span>
             </div>
           </div>
           <div className="sm:col-span-3">
