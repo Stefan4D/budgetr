@@ -23,12 +23,36 @@ export default function ViewSingleExpense() {
     <div className="min-h-[calc(100vh-100px)] w-full flex-1 p-4 sm:min-h-[calc(100vh-76px)] md:w-1/2">
       <h2 className="text-xl font-bold">View Expense</h2>
       <div className="mt-4 max-w-5xl rounded-lg bg-white p-4 shadow">
-        {/* <p>Expense ID: {expenseId}</p> */}
-        <p>Expense ID: {id}</p>
         {/* begin template */}
         <div className="mt-4 px-10">
           <form>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <div className="sm:col-span-3">
+                <label>ID:</label>
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    className="w-full rounded border border-gray-400 px-3 py-2"
+                    name="expense-id"
+                    value={id}
+                    disabled
+                  />
+                </div>
+              </div>
+
+              <div className="sm:col-span-3">
+                <label>Created Date:</label>
+                <div className="mt-2">
+                  <input
+                    type="date"
+                    className="w-full rounded border border-gray-400 px-3 py-2"
+                    name="date-created"
+                    value={createdAt}
+                    disabled
+                  />
+                </div>
+              </div>
+
               <div className="sm:col-span-3">
                 <label>Expense Date:</label>
                 <div className="mt-2">

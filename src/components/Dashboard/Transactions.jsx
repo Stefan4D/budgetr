@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
-import { v4 as uuidv4 } from 'uuid';
 
 export default function Transactions({ isSummary, transactions }) {
   const navigate = useNavigate();
@@ -35,29 +34,42 @@ export default function Transactions({ isSummary, transactions }) {
             </tr>
           </thead>
           <tbody>
-            {transactions?.map((expense) => (
-              <tr key={uuidv4()} className="hover:bg-slate-300">
-                <td className="border-b border-slate-500 px-4 py-2">
-                  {expense.description}
-                </td>
-                <td className="border-b border-slate-500 px-4 py-2">
-                  {dayjs(expense.date).format('DD/MM/YYYY')}
-                </td>
-                <td className="border-b border-slate-500 px-4 py-2 text-right">
-                  {expense.convertedAmount}
-                </td>
-                <td className="border-b border-slate-500 px-4 py-2 text-right">
-                  <div className="flex justify-end">
-                    <button
-                      type="button"
-                      className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+            {isSummary
+              ? transactions
+                  ?.slice(-Math.min(transactions.length, 5))
+                  .map((expense) => (
+                    <tr
+                      key={expense.id}
+                      className="cursor-pointer hover:bg-slate-300"
                       onClick={() =>
-                        navigate(`/app/view/${expense.id}`, { state: expense })
+                        navigate(`/app/view/${expense.id}`, {
+                          state: expense,
+                        })
                       }
                     >
-                      <FaEye />
-                    </button>
-                    {/* <button
+                      <td className="border-b border-slate-500 px-4 py-2">
+                        {expense.description}
+                      </td>
+                      <td className="border-b border-slate-500 px-4 py-2">
+                        {dayjs(expense.date).format('DD/MM/YYYY')}
+                      </td>
+                      <td className="border-b border-slate-500 px-4 py-2 text-right">
+                        {expense.convertedAmount}
+                      </td>
+                      <td className="border-b border-slate-500 px-4 py-2 text-right">
+                        <div className="flex justify-end">
+                          <button
+                            type="button"
+                            className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                            onClick={() =>
+                              navigate(`/app/view/${expense.id}`, {
+                                state: expense,
+                              })
+                            }
+                          >
+                            <FaEye />
+                          </button>
+                          {/* <button
                       type="button"
                       className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
                     >
@@ -69,10 +81,58 @@ export default function Transactions({ isSummary, transactions }) {
                     >
                       <FaTrash />
                     </button> */}
-                  </div>
-                </td>
-              </tr>
-            ))}
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+              : transactions?.map((expense) => (
+                  <tr
+                    key={expense.id}
+                    className="cursor-pointer hover:bg-slate-300"
+                    onClick={() =>
+                      navigate(`/app/view/${expense.id}`, {
+                        state: expense,
+                      })
+                    }
+                  >
+                    <td className="border-b border-slate-500 px-4 py-2">
+                      {expense.description}
+                    </td>
+                    <td className="border-b border-slate-500 px-4 py-2">
+                      {dayjs(expense.date).format('DD/MM/YYYY')}
+                    </td>
+                    <td className="border-b border-slate-500 px-4 py-2 text-right">
+                      {expense.convertedAmount}
+                    </td>
+                    <td className="border-b border-slate-500 px-4 py-2 text-right">
+                      <div className="flex justify-end">
+                        <button
+                          type="button"
+                          className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                          onClick={() =>
+                            navigate(`/app/view/${expense.id}`, {
+                              state: expense,
+                            })
+                          }
+                        >
+                          <FaEye />
+                        </button>
+                        {/* <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaEdit />
+                  </button>
+                  <button
+                    type="button"
+                    className="ml-1 flex items-center justify-center rounded border-[1px] border-slate-900 bg-slate-200 p-1.5 font-semibold hover:bg-slate-900 hover:text-white"
+                  >
+                    <FaTrash />
+                  </button> */}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
           </tbody>
         </table>
         {isSummary && (
