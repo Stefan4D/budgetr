@@ -36,12 +36,22 @@ export default function Dashboard() {
     },
   };
 
+  /**
+   * This function will generate the monthly data for a given transactions array for a given year passed in
+   * @function generateMonthlyData
+   * @param {Array} txs - transactions array
+   * @param {Number} year - year to generate data for
+   * @returns {Object} - { labels: Array, data: Array }
+   */
   const generateMonthlyData = (txs, year) => {
+    // Generate an array of 12 elements with value 0 for each month which will be added to
     const data = Array(12).fill(0);
+    // Generate an array of month names for the labels using dayjs
     const labels = Array.from({ length: 12 }, (_, i) =>
       dayjs(`${year}-${i + 1}-01`).format('MMMM')
     );
 
+    // Loop through the transactions and add the converted amount to the data array for the month using Currency.js to avoid floating point errors
     txs.forEach((tx) => {
       const date = dayjs(tx.date);
       if (date.year() === year) {
@@ -55,6 +65,12 @@ export default function Dashboard() {
     return { labels, data };
   };
 
+  /**
+   * This function will generate the categories data for a given transactions array
+   * @function generateCategoriesData
+   * @param {Array} txs - transactions array
+   * @returns {Object} - { labels: Array, data: Array }
+   */
   const generateCategoriesData = (txs) => {
     // Extract unique categories from transactions
     const categoriesSet = new Set(txs.map((tx) => tx.category));
@@ -98,7 +114,7 @@ export default function Dashboard() {
         datasets: [
           {
             data: catData.data,
-            // for the length of the data array, generate a random colour
+            // for the length of the data array, generate a random colour using HSLA
             backgroundColor: Array.from(
               { length: catData.data.length },
               (element, index) => {
@@ -109,7 +125,6 @@ export default function Dashboard() {
                 return `hsla(${hue}, ${saturation}, ${lightness}, ${alpha})`;
               }
             ),
-            // backgroundColor: ['rgba(34, 211, 238, 1)', 'rgba(30, 41, 59, 0.5)'],
           },
         ],
       });

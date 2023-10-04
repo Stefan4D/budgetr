@@ -42,6 +42,11 @@ function Form({ viewMode = false }) {
     { value: 'USD', label: 'USD' },
   ];
 
+  /**
+   * This function will handle the form change and update the form data
+   * @function handleChange
+   * @param {Object} e - the event object
+   */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -50,8 +55,14 @@ function Form({ viewMode = false }) {
     });
   };
 
+  /**
+   * This function will handle the form submission and save the data to localForage including the converted amount if the currency is not the default currency (GBP)
+   * @function handleSubmit
+   * @param {Object} e - the event object
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
+    // If the currency is not the default currency (GBP), convert the amount to the default currency (GBP) and save the converted amount to localForage
     if (formData.currency === 'USD') {
       fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/GBP`, {
         method: 'GET',
@@ -77,6 +88,7 @@ function Form({ viewMode = false }) {
               notes: formData.notes.trim(),
             },
           ]); // This will add the form data to localForage and trim the description and notes
+          // Reset the form data
           setFormData({
             id: uuidv4(), // unique id
             description: '', // description of the expense
@@ -105,6 +117,7 @@ function Form({ viewMode = false }) {
           notes: formData.notes.trim(),
         },
       ]); // This will add the form data to localForage and trim the description and notes
+      // Reset the form data
       setFormData({
         id: uuidv4(), // unique id
         description: '', // description of the expense

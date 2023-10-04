@@ -34,6 +34,7 @@ export default function Transactions({ isSummary, transactions }) {
             </tr>
           </thead>
           <tbody>
+            {/* This section generates a transaction table of 5 (or fewer if there are fewer records in the array) expenses when isSummary is true, otherwise it generates a table with all transactions */}
             {isSummary
               ? transactions
                   ?.slice(-Math.min(transactions.length, 5))

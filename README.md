@@ -1,71 +1,52 @@
-<h1 align="center">
-  Budgetr
-</h1>
-
-<h4 align="center">
-  MVP expense tracker application with React + Vite
-</h4>
-
+# Budgetr
 
 ## Description
-Budgetr is an expense tracker for the modern age.  Track your spending by category, and by currency, in one convenient and easy-to-use application.
 
-The production website is deployed [here](https://github.com/Stefan4D/budgetr/).
+Budgetr is an expense tracker for the modern age. Track your spending by category, and by currency, in one convenient and easy-to-use application.
 
-![Screenshot of deployed webpage](./src/assets/Logo.png)
+The production website is deployed [here](https://financeflow-budgetr.netlify.app/).
 
+![Screenshot of deployed webpage](./deployed-app.png)
 
-## Example
+## Table of Contents
 
-[Simple Electron application](example) yet capable of handling pretty much any available video. Run:
+- [Description](#description)
+- [Table of Contents](#table-of-contents)
+- [How to use](#how-to-use)
+- [Technologies](#technologies)
+- [Team](#team)
+- [Mark Scheme Compliance](#mark-scheme-compliance)
+  - [Technical Acceptance Criteria](#technical-acceptance-criteria)
+  - [Concept](#concept)
+  - [Deployment](#deployment)
+  - [Repository Quality](#repository-quality)
+  - [Application Quality](#application-quality)
+- [License](#license)
 
-```Terminal
-git clone https://github.com/Stefan4D/budgetr/ 
-npm install
-npm run dev
-```
+## How to use
 
-Package includes prebuilt binaries for all major platforms so no need to setup compilers.
+- To add an expense, go to the Add Expense screen, input the data and submit the form. The expense will be added to the list of expenses on the Dashboard.
+- To view the details of an expense, click on the expense item in the list on the Dashboard.
+- You can view graphs of your expenses by category and by month on the Dashboard.
 
-## React + TypeScript + Vite
+## Technologies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- React
+- Vite
+- Tailwind CSS
+- Node
+- Vitest
+- React Testing Library
+- Graph.js
+- Faker.js
+- React Router
+- React Icons
+- React Hot Toast
+- Currency.js
+- localForage
+- Day.js
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-
-
-
-## Applications using 
-
-* [API/jQuery](https://api.jquery.com/)
-* [React](https://legacy.reactjs.org/)
-* [Vite](https://vitejs.dev/guide/)
-* [Tailwind CSS](tailwindcomponents.com)
-* [Node](https://nodejs.org/en)
-
-Feel free to PR your own.
+Exchange rates are provided by [ExchangeRate-API](https://www.exchangerate-api.com/).
 
 ## Team
 
@@ -76,27 +57,26 @@ The team that built Budgetr is:
 - [Neneng (N Amelya)](https://github.com/noeamelya/)
 - [Shiva (AshivaA)](https://github.com/AshivaA)
 
+## Mark Scheme Compliance
 
 ### Technical Acceptance Criteria
 
-| Item                                                                                                                                                                                                                                                                                                                                                           | Evidence                                                                                                                                                                                                                                                                                                                                           |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Satisfies the following code requirements: <br/>Application uses React. <br/>Application uses Node.<br/>Application uses at least two libraries, packages, or technologies. <br/>Application has both GET and POST routes for retrieving and adding new data.<br/>Application is interactive (accepts and responds to user input). <br/>Application uses Tailwind CSS <br/>Application accepts user input data currently. |
+| Item                                                                                                                                                                                                                                                      | Evidence                                                                                                                                                                                                                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Satisfies the following code requirements: Application uses React. <br/> Application uses Node. <br/> Application uses at least two libraries, packages, or technologies that we haven't discussed.<br/>Application has GET route(s) for retrieving data. | <br/>Application uses React. <br/>Application uses Node.<br/>Application uses Tailwind CSS, Currency.js, localForage, Day.js, Faker.js, React Hot Toast, and Graph.js. <br/>Application has a GET route for retrieving currency exchange rate data.<br/>Application is interactive (accepts and responds to user input). |
 
 ### Concept
 
-| Item                                                                  | Evidence                                                                                                                                                                                              |
-| --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Application should be a unique and novel idea.                        |  Your group should clearly and concisely articulate your project idea. | The single page brief articulates the core concept of the project and is available read-only [here](https://docs.google.com/document/d/1MC0y5PKDFoR-GZwCd4qMGuBGgXzgv3n2V7F29H-fhOY/edit?usp=sharing) |
-
+| Item                                                                                                                       | Evidence                                                                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Application should be a unique and novel idea. <br/> Your group should clearly and concisely articulate your project idea. | The single page brief articulates the core concept of the project and is available read-only [here](https://docs.google.com/document/d/1MC0y5PKDFoR-GZwCd4qMGuBGgXzgv3n2V7F29H-fhOY/edit?usp=sharing) |
 
 ### Deployment
 
-| Item                              | Evidence                                                             |
-| --------------------------------- | -------------------------------------------------------------------- |
-| Application deployed at live URL using Netlify | Live application deployed at: https://github.com/Stefan4D/budgetr |
-| Application loads with no errors. | No visual defects <br /> No console errors                           |
-| Application GitHub URL submitted. | URL submitted                                                        |
+| Item                                                                     | Evidence                                                                                                               |
+| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Application deployed at live URL using Netlify and loads with no errors. | Live application deployed at: https://financeflow-budgetr.netlify.app/ <br/>No visual defects <br /> No console errors |
+| Application GitHub URL submitted.                                        | URL submitted                                                                                                          |
 
 ### Repository Quality
 
@@ -104,21 +84,20 @@ The team that built Budgetr is:
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Repository has a unique name.                                                                           | Unique name used                                                                                                                                                                                                          |
 | Repository follows best practices for file structure and naming conventions.                            | Standard file naming conventions used                                                                                                                                                                                     |
-| Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.  | All multi-word variables in JavaScript use Taailwind<br /><br /> Indentation within code follows best practice <br /><br /> Comments have been included within the files to describe behaviour and/or intent of the code. |
+| Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.  | All multi-word variables in JavaScript use camelCase<br /><br /> Indentation within code follows best practice <br /><br /> Comments have been included within the files to describe behaviour and/or intent of the code. |
 | Repository contains multiple descriptive commit messages.                                               | Multiple commits included demonstrating incremental build of final submission. Each has a clear description of changes made.                                                                                              |
 | Repository contains quality README file with description, screenshot, and link to deployed application. | This README document.                                                                                                                                                                                                     |
 
 ### Application Quality
 
-| Item                                                           | Evidence                                                                                                                                            |
-| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Application user experience is intuitive and easy to navigate. | Application user interface matches the wireframe from the original design and uses intuitive elements e.g. click on a history item to search again. |
-| Application user interface style is clean and polished.        | As above                                                                                                                                            |
-| Application is responsive.                                     | Application uses the Tailwind CSS to display content in a responsive way.                                                                  |
+| Item                                                           | Evidence                                                                                                                                                           |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Application user experience is intuitive and easy to navigate. | Application user interface matches the wireframe from the original design and uses intuitive elements e.g. click on a transaction/expense item to view the detail. |
+| Application user interface style is clean and polished.        | As above                                                                                                                                                           |
+| Application is responsive.                                     | Application uses Tailwind CSS to display content in a responsive way using standard breakpoints.                                                                   |
 
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 
 Released under the MIT license. Full details in [LICENSE](./LICENSE).
