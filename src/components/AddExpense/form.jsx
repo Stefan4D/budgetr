@@ -95,6 +95,7 @@ function Form({ viewMode = false }) {
                 name="date"
                 value={formData.date}
                 onChange={handleChange}
+                required
               />
             </div>
           </div>
@@ -106,6 +107,8 @@ function Form({ viewMode = false }) {
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
+                placeholder="Select..."
+                required
               >
                 {categories.map((category) => (
                   <option key={category.value} value={category.value}>
@@ -127,6 +130,7 @@ function Form({ viewMode = false }) {
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
+                required
               />
             </div>
           </div>
@@ -134,12 +138,13 @@ function Form({ viewMode = false }) {
             <label>Amount:</label>
             <div className="mt-2">
               <input
-                type="text"
+                type="number"
                 placeholder="Full amount e.g. 10.00"
                 className="w-full rounded border border-gray-400 px-3 py-2"
                 name="amount"
                 value={formData.amount}
                 onChange={handleChange}
+                required
               />
             </div>
           </div>
