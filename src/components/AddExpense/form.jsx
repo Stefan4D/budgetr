@@ -149,7 +149,6 @@ function Form({ viewMode = false }) {
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-                placeholder="Select..."
                 required
               >
                 {categories.map((category) => (
