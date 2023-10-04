@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import currency from 'currency.js';
 import { FaRegCalendarAlt } from 'react-icons/fa';
+import toast, { Toaster } from 'react-hot-toast';
 // import useFetch from '../../hooks/useFetch';
 import useLocalForage from '../../hooks/useLocalForage';
 import globals from '../../data/globals';
@@ -67,11 +68,6 @@ function Form({ viewMode = false }) {
           formData.convertedAmount = currency(formData.amount)
             .divide(data.conversion_rates.USD)
             .toString();
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        })
-        .finally(() => {
           console.log(formData); // This will log the form data to the console
           setDatabaseValue([
             ...databaseValue,
@@ -92,6 +88,11 @@ function Form({ viewMode = false }) {
             notes: '', // optional
             createdAt: dayjs(new Date()).format('YYYY-MM-DD'), // date of creation
           });
+          toast.success('Saved!');
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          toast.error('Failed to save!');
         });
     } else {
       formData.convertedAmount = formData.amount;
@@ -115,6 +116,7 @@ function Form({ viewMode = false }) {
         notes: '', // optional
         createdAt: dayjs(new Date()).format('YYYY-MM-DD'), // date of creation
       });
+      toast.success('Saved!');
     }
   };
 
@@ -248,6 +250,7 @@ function Form({ viewMode = false }) {
           </button>
         </div>
       </form>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 }
